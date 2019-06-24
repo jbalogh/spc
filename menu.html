@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/d3@5.9.2/dist/d3.js" crossorigin></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,300b&display=swap" rel="stylesheet">
+
+<style>
+#wine-list {
+  font-family: 'Raleway', sans-serif;
+  width: 1040px;
+  font-size: 16px;
+  margin: 0 auto;
+}
+.styles {
+  display: grid;
+  grid-template-columns: 500px 500px;
+  grid-column-gap: 40px;
+}
+.btg {
+  margin: 8px 0;
+  line-height: 20px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 3fr 3fr 1.5fr;
+}
+.price {
+  text-align: right;
+}
+.row + .row {
+  font-size: 70%;
+}
+.title {
+  font-style: italic;
+}
+.grape {
+  font-size: 90%;
+  font-weight: bold;
+}
+</style>
+  </head>
+  <body>
+    <div id="wine-list">
+      <div id="wines"></div>
+    </div>
+<script type="text/babel">
+
+function process(data) {
+  data.forEach(w => {
+    w.btg = w['BTG'] != '';
+    w.bottle = w['Bottle'] != '';
+    w.order = +(w.btg ? w['BTG'] : w['Bottle']);
+  });
+  const ws = data.filter(d => d.btg || d.bottle);
+  const rv = {
+    whiteBTG: ws.filter(d => d.Type == 'White'),
+    redBTG: ws.filter(d => d.Type == 'Red'),
+    bubblesBTG: ws.filter(d => d.Type == 'Bubbles'),
+    roseBTG: ws.filter(d => d.Type == 'Rosé'),
+  }
+  Object.keys(rv).forEach(key => {
+    rv[key].sort((a, b) => (a.btg && b.btg || a.bottle && b.bottle) ? a.order - b.order : (a.btg && !b.btg ? -1 : (b.btg && !a.btg ? 1 : 0)));
+  });
+  return rv;
+}
+    
+class WineList extends React.Component {
+  render() {
+    const data = process(this.props.data);
+    const btg = [
+      ['Bubbles', data.bubblesBTG],
+      ['Rosé', data.roseBTG],
+      ['White', data.whiteBTG],
+      ['Red', data.redBTG],
+    ];
+    return (
+      <div className="styles">
+        {btg.map(([title, wines]) => {
+          return (
+            <div>
+              <h2>{title}</h2>
+              <div>{wines.map(w => <BTG wine={w} />)}</div>
+            </div>
+          );
+         })}
+      </div>
+    );
+  }
+}
+
+class BTG extends React.Component {
+  render() {
+    const w = this.props.wine;
+    const [region, country] = w['Country'] == 'USA' ? [w['Place'], w['Region']] : [w['Region'], w['Country']];
+    const price = Math.round(w['Price']);
+    const priceLabel = w.btg ? '$' + price + '/$' + Math.floor(price * 3.5) : '$' + Math.floor(price * 3);
+    return (
+      <div className="btg">
+        <div className="row">
+          <span className="grape">{w['Grape']}</span>
+          <span className="producer">{w['Producer']}</span>
+          <span className="price">{priceLabel}</span>
+        </div>
+        <div className="row">
+          <span className="place">{region}, {country} {w['Vintage']}</span>
+          <span className="title">{w['Title']}</span>
+        </div>
+      </div>
+    );
+  }
+}
+</script>
+
+
+
+    <script type="text/babel">
+      d3.csv('wines.csv').then(function(data) {
+        ReactDOM.render(<WineList data={data} />, document.getElementById('wines'));
+      });
+    </script>
+  </body>
+</html>
