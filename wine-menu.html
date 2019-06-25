@@ -50,10 +50,11 @@
 <script type="text/babel">
 
 function process(data) {
-  data.forEach(w => {
+  data.forEach((w, idx) => {
     w.btg = w['BTG'] != '';
     w.bottle = w['Bottle'] != '';
     w.order = +(w.btg ? w['BTG'] : w['Bottle']);
+    w.key = idx;
   });
   const ws = data.filter(d => d.btg || d.bottle);
   const rv = {
@@ -89,7 +90,7 @@ class WineList extends React.Component {
           return (
             <div key={title}>
               <h2>{title}</h2>
-              <div>{wines.map(w => <BTG key={w['Producer'] + w['Title']} wine={w} />)}</div>
+              <div>{wines.map(w => <BTG key={w.key} wine={w} />)}</div>
             </div>
           );
          })}
