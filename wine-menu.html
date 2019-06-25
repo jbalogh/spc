@@ -21,8 +21,8 @@
   grid-column-gap: 40px;
 }
 .btg {
-  margin: 8px 0;
-  line-height: 20px;
+  margin: 10px 0;
+  line-height: 18px;
 }
 .row {
   display: grid;
@@ -57,20 +57,26 @@ function process(data) {
   });
   const ws = data.filter(d => d.btg || d.bottle);
   const rv = {
+    all: ws,
     whiteBTG: ws.filter(d => d.Type == 'White'),
     redBTG: ws.filter(d => d.Type == 'Red'),
     bubblesBTG: ws.filter(d => d.Type == 'Bubbles'),
     roseBTG: ws.filter(d => d.Type == 'Rosé'),
   }
-  Object.keys(rv).forEach(key => {
-    rv[key].sort((a, b) => (a.btg && b.btg || a.bottle && b.bottle) ? a.order - b.order : (a.btg && !b.btg ? -1 : (b.btg && !a.btg ? 1 : 0)));
-  });
+  function cmp(a, b) {
+    if (a.btg && b.btg || a.bottle && b.bottle) return a.order - b.order;
+    else if (a.btg && !b.btg) return -1;
+    else if (!a.btg && b.btg) return 1;
+    else return 0;
+  }
+  Object.values(rv).forEach(arr => arr.sort(cmp));
   return rv;
 }
     
 class WineList extends React.Component {
   render() {
     const data = process(this.props.data);
+    window.datums = data;
     const btg = [
       ['Bubbles', data.bubblesBTG],
       ['Rosé', data.roseBTG],
@@ -81,9 +87,9 @@ class WineList extends React.Component {
       <div className="styles">
         {btg.map(([title, wines]) => {
           return (
-            <div>
+            <div key={title}>
               <h2>{title}</h2>
-              <div>{wines.map(w => <BTG wine={w} />)}</div>
+              <div>{wines.map(w => <BTG key={w['Producer'] + w['Title']} wine={w} />)}</div>
             </div>
           );
          })}
@@ -92,10 +98,16 @@ class WineList extends React.Component {
   }
 }
 
+function loc(w) {
+  if (w['Country'] == 'USA') return [w['Place'], w['Region']];
+  else if (w['Region'] == 'Burgundy') return [w['Place'], w['Region'], w['Country']];
+  else return [w['Region'], w['Country']];
+}
+
 class BTG extends React.Component {
   render() {
     const w = this.props.wine;
-    const [region, country] = w['Country'] == 'USA' ? [w['Place'], w['Region']] : [w['Region'], w['Country']];
+    const place = loc(w).filter(x => x.length > 0).join(', ');
     const price = Math.round(w['Price']);
     const priceLabel = w.btg ? '$' + price + '/$' + Math.floor(price * 3.5) : '$' + Math.floor(price * 3);
     return (
@@ -106,7 +118,7 @@ class BTG extends React.Component {
           <span className="price">{priceLabel}</span>
         </div>
         <div className="row">
-          <span className="place">{region}, {country} {w['Vintage']}</span>
+          <span className="place">{place} {w['Vintage']}</span>
           <span className="title">{w['Title']}</span>
         </div>
       </div>
@@ -118,9 +130,20 @@ class BTG extends React.Component {
 
 
     <script type="text/babel">
-      d3.csv('wines.csv').then(function(data) {
-        ReactDOM.render(<WineList data={data} />, document.getElementById('wines'));
-      });
+const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2ZddImze-Iwtwlj8MXMETVo9aMr4Ohjer8h4rwf70guc1mFArkIWYqcfgU_V-5ZmZWJb3LkdUsJSB/pub?gid=0&single=true&output=csv'
+d3.csv(url).then(function(data) {
+  ReactDOM.render(<WineList data={data} />, document.getElementById('wines'));
+});
+function acc(key, ws) { 
+  return ws.reduce((accum, w) => { 
+    const t = w[key]; 
+    if (accum[t]) accum[t] += 1; 
+    else accum[t] = 1; 
+    return accum;
+   }, 
+   {}
+  );
+}
     </script>
   </body>
 </html>
