@@ -42,17 +42,26 @@
   font-size: 90%;
   font-weight: bold;
 }
+#cocktails {
+  columns: 2;
+}
+#cocktails .btg {
+  break-inside: avoid;
+}
 </style>
   </head>
   <body>
     <div id="wine-list">
       <div id="wines"></div>
+      <div id="drinks"</div>
     </div>
 <script type="text/babel">
 
 function process(data) {
   data.forEach((w, idx) => {
     w.btg = w['BTG'] != '';
+    w.isSpirit = w['Type'].startsWith('Spirits:');
+    if (w.isSpirit) w['Type'] = w['Type'].slice(9);
     w.bottle = w['Bottle'] != '';
     w.order = +(w.btg ? w['BTG'] : w['Bottle']);
     w.key = idx;
@@ -60,11 +69,14 @@ function process(data) {
   const ws = data.filter(d => d.btg || d.bottle);
   const rv = {
     all: ws,
-    whiteBTG: ws.filter(d => d.Type == 'White'),
-    redBTG: ws.filter(d => d.Type == 'Red'),
-    bubblesBTG: ws.filter(d => d.Type == 'Bubbles'),
-    roseBTG: ws.filter(d => d.Type == 'Rosé'),
-  }
+    white: ws.filter(d => d.Type == 'White'),
+    red: ws.filter(d => d.Type == 'Red'),
+    bubbles: ws.filter(d => d.Type == 'Bubbles'),
+    rose: ws.filter(d => d.Type == 'Rosé'),
+    cider: ws.filter(d => d.Type == 'Cider'),
+    dessert: ws.filter(d => d.Type == 'Dessert'),
+    spirits: ws.filter(d => d.isSpirit),
+  };
   function cmp(a, b) {
     if (a.btg && b.btg || a.bottle && b.bottle) return a.order - b.order;
     else if (a.btg && !b.btg) return -1;
@@ -80,10 +92,13 @@ class WineList extends React.Component {
     const data = process(this.props.data);
     window.datums = data;
     const btg = [
-      ['Bubbles', data.bubblesBTG],
-      ['Rosé', data.roseBTG],
-      ['White', data.whiteBTG],
-      ['Red', data.redBTG],
+      ['Bubbles', data.bubbles],
+      ['Rosé', data.rose],
+      ['White', data.white],
+      ['Red', data.red],
+      ['Dessert Wines', data.dessert],
+      ['Ciders', data.cider],
+      ['Spirits', data.spirits],
     ];
     return (
       <div className="styles">
@@ -91,7 +106,7 @@ class WineList extends React.Component {
           return (
             <div key={title}>
               <h2>{title}</h2>
-              <div>{wines.map(w => <BTG key={w.key} wine={w} />)}</div>
+              <div>{wines.map(w => <Drink key={w.key} wine={w} />)}</div>
             </div>
           );
          })}
@@ -106,18 +121,25 @@ function loc(w) {
   else return [w['Region'], w['Country']];
 }
 
-class BTG extends React.Component {
+function priceLabel(w) {
+  const price = Math.round(w['Price']);
+  if (w.Type == 'Dessert') return '$' + price;
+  else if (w.Type == 'Cider') return '$' + Math.floor(1.5 * price);
+  else if (w.isSpirit) return '$' + Math.floor(price / 12 * 2.5);
+  else if (w.btg) return '$' + price + '/$' + Math.floor(price * 3.2);
+  else return '$' + Math.floor(price * 3);
+}
+
+class Drink extends React.Component {
   render() {
     const w = this.props.wine;
     const place = loc(w).filter(x => x.length > 0).join(', ');
-    const price = Math.round(w['Price']);
-    const priceLabel = w.btg ? '$' + price + '/$' + Math.floor(price * 3.5) : '$' + Math.floor(price * 3);
     return (
       <div className="btg">
         <div className="row">
-          <span className="grape">{w['Grape']}</span>
+          <span className="grape">{w.isSpirit ? w['Type'] : w['Grape']}</span>
           <span className="producer">{w['Producer']}</span>
-          <span className="price">{priceLabel}</span>
+          <span className="price">{priceLabel(w)}</span>
         </div>
         <div className="row">
           <span className="place">{place} {w['Vintage']}</span>
@@ -127,15 +149,56 @@ class BTG extends React.Component {
     );
   }
 }
+
+function processDrinks(data) {
+  const xs = data.filter(x => x['Position'] != '').sort((a, b) => +a['Position'] - +b['Position']);
+  return {cocktails: xs};
+}
+
+class DrinksList extends React.Component {
+  render() {
+    const data = processDrinks(this.props.data);
+    return (
+      <div>
+        <h2>Cocktails <small style={{fontSize: '16px'}}>(All $14)</small></h2>
+	<div id="cocktails">
+	  {data.cocktails.map(x => <Cocktail drink={x} key={x['Position']} />)}
+	</div>
+      </div>
+    );
+  }
+}
+
+class Cocktail extends React.Component {
+  render() {
+    const w = this.props.drink;
+    return (
+      <div className="btg">
+        <div className="row">
+	  <span className="grape">{w['Name']}</span>
+	</div>
+        <div className="row">
+	  <span className="place">{w['Ingredients']}</span>
+	</div>
+      </div>
+    );
+  }
+}
 </script>
 
 
 
     <script type="text/babel">
-const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2ZddImze-Iwtwlj8MXMETVo9aMr4Ohjer8h4rwf70guc1mFArkIWYqcfgU_V-5ZmZWJb3LkdUsJSB/pub?gid=0&single=true&output=csv'
-d3.csv(url).then(function(data) {
+const wineURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2ZddImze-Iwtwlj8MXMETVo9aMr4Ohjer8h4rwf70guc1mFArkIWYqcfgU_V-5ZmZWJb3LkdUsJSB/pub?gid=0&single=true&output=csv';
+const cocktailsURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2ZddImze-Iwtwlj8MXMETVo9aMr4Ohjer8h4rwf70guc1mFArkIWYqcfgU_V-5ZmZWJb3LkdUsJSB/pub?gid=988098023&single=true&output=csv';
+d3.csv(wineURL).then(function(data) {
   ReactDOM.render(<WineList data={data} />, document.getElementById('wines'));
 });
+
+d3.csv(cocktailsURL).then(function(data) {
+  ReactDOM.render(<DrinksList data={data} />, document.getElementById('drinks'));
+});
+
 function acc(key, ws) { 
   return ws.reduce((accum, w) => { 
     const t = w[key]; 
