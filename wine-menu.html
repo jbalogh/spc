@@ -20,6 +20,7 @@
   display: grid;
   grid-template-columns: 500px 500px;
   grid-column-gap: 40px;
+  page-break-inside: avoid;
 }
 .btg {
   margin: 10px 0;
@@ -47,6 +48,9 @@
 }
 #cocktails .btg {
   break-inside: avoid;
+}
+.style {
+  page-break-inside: avoid;
 }
 </style>
   </head>
@@ -104,7 +108,7 @@ class WineList extends React.Component {
       <div className="styles">
         {btg.map(([title, wines]) => {
           return (
-            <div key={title}>
+            <div className="style" key={title}>
               <h2>{title}</h2>
               <div>{wines.map(w => <Drink key={w.key} wine={w} />)}</div>
             </div>
@@ -127,7 +131,7 @@ function priceLabel(w) {
   else if (w.Type == 'Cider') return '$' + Math.floor(1.5 * price);
   else if (w.isSpirit) return '$' + Math.floor(price / 12 * 2.5);
   else if (w.btg) return '$' + price + '/$' + Math.floor(price * 3.2);
-  else return '$' + Math.floor(price * 3);
+  else return '$' + Math.floor(priceCalculator(price));
 }
 
 class Drink extends React.Component {
@@ -183,6 +187,11 @@ class Cocktail extends React.Component {
       </div>
     );
   }
+}
+
+function priceCalculator(x) {
+  const log = Math.log;
+  return Math.floor(2 * x + (x * log(10)/log(x)));
 }
 </script>
 
