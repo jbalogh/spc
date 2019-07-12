@@ -130,7 +130,7 @@ function priceLabel(w) {
   if (w.Type == 'Dessert') return '$' + price;
   else if (w.Type == 'Cider') return '$' + Math.floor(1.5 * price);
   else if (w.isSpirit) return '$' + Math.floor(price / 12 * 2.5);
-  else if (w.btg) return '$' + price + '/$' + Math.floor(price * 3.2);
+  else if (w.btg) return '$' + price + '/$' + Math.floor(price * 3.4);
   else return '$' + Math.floor(priceCalculator(price));
 }
 
@@ -191,7 +191,8 @@ class Cocktail extends React.Component {
 
 function priceCalculator(x) {
   const log = Math.log;
-  return Math.floor(2 * x + (x * log(10)/log(x)));
+  const ceiling = 150;
+  return Math.floor(x + Math.min(x * log(ceiling)/log(x), ceiling));
 }
 </script>
 
