@@ -126,7 +126,7 @@ function loc(w) {
 }
 
 function priceLabel(w) {
-  const price = Math.round(w['Price']);
+  const price = Math.round(w['Price'].replace(/\$/, ''));
   if (w.Type == 'Dessert') return '$' + price;
   else if (w.Type == 'Cider') return '$' + Math.floor(1.5 * price);
   else if (w.isSpirit) return '$' + Math.floor(price / 12 * 2.5);
