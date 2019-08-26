@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>South Park Cafe Wine Menu</title>
+    <script src="https://unpkg.com/d3@5.9.2/dist/d3.js" crossorigin></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,300b,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  color: #111;
+}
+#menu {
+  width: 700px;
+  display: inline-block;
+  margin-top: 50px;
+}
+#menu:first-child {
+  margin-left: 40px;
+  margin-right: 60px;
+}
+#logo {
+  text-align: center;
+}
+.menu {
+  display: inline-block;
+  width: 350px;
+  vertical-align: top;
+}
+#date {
+  font-size: 10px;
+  font-family: 'Rubik Mono One', sans-serif;
+  margin: -4px 0 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Rubik Mono One', sans-serif;
+  margin: 0;
+}
+h1 {
+  font-size: 2em;
+  margin: 0 0 20px;
+}
+h4 {
+  font-size: 1em;
+  margin-top: 1.5em;
+}
+#menu {
+  font-family: 'Nunito', sans-serif;
+}
+dl {
+  width: 400px;
+  margin: 0;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-top: -4px;
+  margin-bottom: 6px;
+  line-height: 16px;
+}
+#wine-list {
+  font-family: 'Raleway', sans-serif;
+  width: 1040px;
+  font-size: 14px;
+  margin: 0 auto;
+}
+#wines {
+  width: 9.6in;
+  height: 15.45in;
+  border: 1px solid black;
+}
+.styles {
+  display: grid;
+  grid-template-columns: 4.25in 4.25in;
+  grid-column-gap: 40px;
+  page-break-inside: avoid;
+  margin: .25in .25in;
+}
+.btg {
+  margin: 10px 0;
+  line-height: 18px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 3fr 3fr 70px;
+}
+.price {
+  text-align: right;
+}
+.row + .row {
+  font-size: 70%;
+}
+.title {
+  font-style: italic;
+}
+.grape {
+  font-size: 90%;
+  font-weight: bold;
+}
+#cocktails {
+  columns: 2;
+}
+#cocktails .btg {
+  break-inside: avoid;
+}
+.style {
+  page-break-inside: avoid;
+}
+</style>
+  </head>
+  <body>
+    <div id="the-menu"></div>
+<script type="text/babel">
+
+class Drink extends React.Component {
+  render() {
+    const w = this.props.wine;
+    const place = w['Place'];
+    return (
+      <div className="btg">
+        <div className="row">
+          <span className="grape">{w.isSpirit ? w['Type'] : w['Grape']}</span>
+          <span className="producer">{w['Producer']}</span>
+        </div>
+        <div className="row">
+          <span className="place">{place} {w['Vintage']}</span>
+          <span className="title">{w['Title']}</span>
+        </div>
+      </div>
+    );
+  }
+}
+
+function processDrinks(data) {
+  const xs = data.filter(x => x['Position'] != '').sort((a, b) => +a['Position'] - +b['Position']);
+  return {cocktails: xs};
+}
+
+class DrinksList extends React.Component {
+  render() {
+    const data = processDrinks(this.props.data);
+    return (
+      <div>
+        <h2>Cocktails <small style={{fontSize: '16px'}}>(All $14)</small></h2>
+	<div id="cocktails">
+	  {data.cocktails.map(x => <Cocktail drink={x} key={x['Position']} />)}
+	</div>
+      </div>
+    );
+  }
+}
+
+class Cocktail extends React.Component {
+  render() {
+    const w = this.props.drink;
+    return (
+      <div className="btg">
+        <div className="row">
+	  <span className="grape">{w['Name']}</span>
+	</div>
+        <div className="row">
+	  <span className="place">{w['Ingredients']}</span>
+	</div>
+      </div>
+    );
+  }
+}
+
+const food = {
+  salads: [
+    // ['Frisée', 'grilled endive, smoked grapes, fennel, balsamic dressing'],
+  ],
+  smalls: [
+    ['Caesar Salad', 'croutons, cured egg yolk, lemon-anchovy dressing'],
+    ['Beets', 'pistachio, grilled endive, smoked grapes, feta, balsamic'],
+    ['Cured Trout', 'crème frâiche, shallots, chives, olive oil'],
+    ['Mussels & Chorizo', 'grilled bread, white wine'],
+    ['Lamb Meatballs', 'house-fermented cayenne labneh, frisée'],
+  ],
+  mains: [
+    ['Koji-rubbed NY Strip Steak', 'umami shrooms, cioppini onions'],
+    ['Brined Pork Chop', 'red cabbage slaw with fennel and apple'],
+    ['Fried Chicken or Tofu', 'hot honey sauce, collard greens, corn relish'],
+  ],
+  desserts: [
+    ['Galette', 'red pears, dark cherries'],
+  ],
+};
+
+const drinks = {};
+const wine = drinks.wine = {
+  bubbles: [
+    ['San Venanzio', null, 'Prosecco Valdobbiadene Superiore Brut', 'Veneto, Italy', 'NV'],
+  ],
+  white: [
+    ['Nigl', 'Grüner Veltliner', 'Freiheit', 'Kremstal', 'Austria', '2018'],
+    ['Leeuwin Estate', 'Chardonnay', 'Prelude', 'Margaret River', 'Australia', '2016'],
+  ],
+  red: [
+    ['Carmel Road', 'Pinot Noir', '“South Crest” Panorama Vineyard', 'Monterey', 'California', '2015'],
+    ['Valderiz', 'Tempranillo', null, 'Ribera del Duero', 'Spain', '2014'],
+  ],
+  dessert: [
+    ['Saracco', 'Moscato d\'Asti', null, 'Piedmont', 'Italy', 'NV'],
+  ],
+};
+
+drinks.cocktails = [
+  ['Champs-Élysées', 'pierre ferrand cognac, green chartreuse, lemon, simple, bitters'],
+  /* 2 cognac, 3/4 lime, 1/2 green chartreuse, 1/4 simple, coupe, lemon twist garnish */
+  ['Regal Amburana', 'avuá amburana cachaça, lime, honey'],
+  /* 7/8 lime, 3/4 honey, 2 amburana, grapefruit shake; coupe, lime wedge */
+  ['Medicina Latina', 'del maguey vida mezcal, house ginger syrup, honey, lime'],
+  /* 2 mezcal, 3/8 honey, 1/2 ginger, 3/4 lime, rocks w/ large cube, candied ginger, mezcal float */
+  ['Tequila Eastside', 'el tesoro tequila blanco, lime, simple, cucumber, mint'],
+  /* 3 thin cuke slices, mint sprigs, 1 lime, 3/4 simple, 1.5 tequila; shake with 1 large cube, serve on rocks glass with 1 large cube */
+  ['Brooklyn', 'rittenhouse rye, dolin dry vermouth, amaro ciocaro, leopold maraschino liqueuer'],
+  /* 2 rye, 3/4 dolin dry, 1/4 ciocaro, tesapoon maraschino; nick and nora*/
+];
+
+drinks.soft = [
+  ['South Park Spritz Mocktail', 'cucumber, lime, grapefruit, fizz'],
+  ['Squirt', ''],
+  ['Reed\'s Ginger Ale', ''],
+];
+
+class Menu extends React.Component {
+  render() {
+    return (
+      <div id="menu">
+        <div id="logo">
+          <img src="logo.svg" alt="South Park Cafe" />
+          <div id="date">August 22, 2019</div>
+        </div>
+        <FoodMenu />
+        <DrinksMenu />
+      </div>
+    );
+  }
+}
+
+const foodSections = [
+  // ['Salads', food.salads],
+  ['Small Plates', food.smalls],
+  ['Mains', food.mains],
+  ['Dessert', food.desserts],
+];
+
+const drinkSections = [
+  ['Cocktails', drinks.cocktails],
+  ['Bubbles', wine.bubbles],
+  ['White', wine.white],
+  ['Red', wine.red],
+  ['Dessert', wine.dessert],
+  ['Soft', drinks.soft],
+];
+
+class MenuSection extends React.Component {
+  render() {
+    return (
+      <section>
+        <h4>{this.props.heading}</h4>
+        {this.props.body.map(([title, desc]) => (
+          <React.Fragment key={title}>
+            <dt>{title}</dt>
+            <dd>{desc}</dd>
+          </React.Fragment>
+        ))}
+      </section>
+    );
+  }
+}
+
+class WineSection extends React.Component {
+  render() {
+    const body = this.props.body.map(wine =>
+     [[wine[0], wine[2], wine[1]].join(' '),
+      [wine[3], wine[4], wine[5]].join(', ')]
+    );
+    return <MenuSection heading={this.props.heading} body={body} />
+  }
+}
+
+
+class FoodMenu extends React.Component {
+  render() {
+    return (
+      <div id="food-menu" className="menu">
+        {foodSections.map(([heading, body], idx) => (
+          <MenuSection heading={heading} body={body} key={idx} />
+        ))}
+      </div>
+    );
+  }
+}
+
+class DrinksMenu extends React.Component {
+  render() {
+    return (
+      <div id="drinks-menu" className="menu">
+        <MenuSection heading="Cocktails" body={drinks.cocktails} />
+        <WineSection heading="Bubbles" body={wine.bubbles} />
+        <WineSection heading="White Wine" body={wine.white} />
+        <WineSection heading="Red Wine" body={wine.red} />
+        <WineSection heading="Dessert Wine" body={wine.dessert} />
+        <MenuSection heading="Zero Proof" body={drinks.soft} />
+      </div>
+    );
+  }
+}
+
+
+ReactDOM.render(<div><Menu /><Menu /></div>, document.getElementById('the-menu'));
+</script>
+  </body>
+</html>

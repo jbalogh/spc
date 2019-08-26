@@ -8,20 +8,27 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,300b&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT Serif:300,300i,300b,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
 
 <style>
+#spirits-list,
 #wine-list {
-  font-family: 'Raleway', sans-serif;
-  width: 1040px;
-  font-size: 16px;
+  font-family: 'PT Serif', serif;
+  width: 9.6in;
+  height: 15.45in;
+  border: 1px solid black;
+  font-size: 13px;
   margin: 0 auto;
+  color: #222;
 }
+/*
 .styles {
   display: grid;
   grid-template-columns: 500px 500px;
   grid-column-gap: 40px;
   page-break-inside: avoid;
 }
+*/
 .btg {
   margin: 10px 0;
   line-height: 18px;
@@ -30,25 +37,16 @@
   display: grid;
   grid-template-columns: 3fr 3fr 70px;
 }
-.spirit .row {
-  display: grid;
-  grid-template-columns: 5fr 70px;
-}
 .price {
   text-align: right;
-}
-.row + .row {
-  font-size: 70%;
-}
-.spirit .row {
-  font-size: 100%;
+  display: block;
 }
 .title {
   font-style: italic;
 }
 .grape {
-  font-size: 90%;
   font-weight: bold;
+  font-variant: small-caps;
 }
 #cocktails {
   columns: 2;
@@ -57,12 +55,49 @@
   break-inside: avoid;
 }
 .style {
-  page-break-inside: avoid;
+  width: 420px;
+  display: inline-block;
+  margin: 0 20px;
+  vertical-align: top;
+}
+.style table {
+  border-collapse: collapse;
+}
+.style td {
+  vertical-align: top;
+}
+.style td:nth-child(1) { width: 220px; }
+.style td:nth-child(2) { width: 150px; }
+.place, .title {
+  display: block;
+  margin-bottom: 8px;
+}
+#spirits-list {
+  padding: 10px 20px;
+  columns: 3 auto;
+}
+.spirit {
+  break-inside: avoid;
+}
+.spirit h4 {
+  margin-bottom: 8px;
+}
+.spirit table {
+  border-collapse: collapse;
+}
+.spirit td {
+  vertical-align: top;
+}
+.spirit td:first-child {
+  width: 300px;
+}
+.spirit td.price {
+  text-align: right;
 }
 </style>
   </head>
   <body>
-    <div id="wine-list">
+    <div>
       <div id="wines"></div>
       <div id="drinks"</div>
     </div>
@@ -135,22 +170,32 @@ class WineList extends React.Component {
       ['Rosé', data.rose],
       ['White', data.white],
       ['Red', data.red],
+      /*
       ['Dessert Wines', data.dessert],
       ['Beer & Cider', data.cider],
+      */
     ];
     return (
       <div>
-        <div className="styles">
-          {btg.map(([title, wines]) => {
-            return (
-              <div className="style" key={title}>
-                <h2>{title}</h2>
-                <div>{wines.map(w => <Drink key={w.key} wine={w} />)}</div>
-              </div>
-            );
-           })}
+        <div id="wine-list">
+          <div className="styles">
+            {btg.map(([title, wines]) => {
+              return (
+                <div className="style" key={title}>
+                  <h2>{title}</h2>
+                  <table>
+                    <tbody>
+                      {wines.map(w => <Drink key={w.key} wine={w} />)}
+                    </tbody>
+                  </table>
+                </div>
+              );
+             })}
+          </div>
         </div>
-        <SpiritsList spirits={spirits} />
+        <div id="spirits-list">
+          <SpiritsList spirits={spirits} />
+        </div>
       </div>
     );
   }
@@ -199,11 +244,13 @@ class SpiritsList extends React.Component {
         {keys.map(k => {
           const v = spirits[k];
           return (
-            <div className="spirit style" key={k}>
+            <div className="spirit" key={k}>
               <h4>{k}</h4>
-              <div>
-                {spirits[k].map(w => <Spirit key={w.key} spirit={w} />)}
-              </div>
+              <table>
+                <tbody>
+                  {spirits[k].map(w => <Spirit key={w.key} spirit={w} />)}
+                </tbody>
+              </table>
             </div>
           );
          })}
@@ -216,10 +263,10 @@ class Spirit extends React.Component {
   render() {
     const w = this.props.spirit;
     return (
-      <div className="row">
-        <span>{w.Title}</span>
-        <span className="price">{priceLabel(w)}</span>
-      </div>
+      <tr>
+        <td>{w.Title}</td>
+        <td className="spirit-price">{priceLabel(w)}</td>
+      </tr>
     );
   }
 }
@@ -246,17 +293,19 @@ class Drink extends React.Component {
     const w = this.props.wine;
     const place = loc(w).filter(x => x.length > 0).join(', ');
     return (
-      <div className="btg">
-        <div className="row">
-          <span className="grape">{w.isSpirit ? w['Type'] : w['Grape']}</span>
-          <span className="producer">{w['Producer']}</span>
-          <span className="price">{priceLabel(w)}</span>
-        </div>
-        <div className="row">
+      <tr className="btg">
+        <td>
+          <span className="grape">{w.isSpirit ? w['Type'] : w['Grape']}</span>{' '}
           <span className="place">{place} {w['Vintage']}</span>
+        </td>
+        <td>
+          <span className="producer">{w['Producer']}</span>{' '}
           <span className="title">{w['Title']}</span>
-        </div>
-      </div>
+        </td>
+        <td>
+          <span className="price">{priceLabel(w)}</span>
+        </td>
+      </tr>
     );
   }
 }
@@ -334,7 +383,7 @@ Promise.all([d3.csv(wineURL), d3.csv(spiritsURL)]).then(function([wine, spirits]
 });
 
 d3.csv(cocktailsURL).then(function(data) {
-  ReactDOM.render(<DrinksList data={data} />, document.getElementById('drinks'));
+  // ReactDOM.render(<DrinksList data={data} />, document.getElementById('drinks'));
 });
 
 function acc(key, ws) { 
