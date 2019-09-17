@@ -1,0 +1,540 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:image" content="ohyeah.jpg">
+    <title>SPC Food Menu</title>
+    <script src="https://unpkg.com/d3@5.9.2/dist/d3.js" crossorigin></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT Serif:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <style>
+* {
+  margin: 0;
+  color: #111;
+}
+body {
+  font-family: 'PT Serif', serif;
+}
+h1 {
+  font-size: 2em;
+  margin: 0 0 20px;
+}
+h4 {
+  font-size: 1em;
+}
+dl {
+  margin: 0;
+}
+dt {
+  font-weight: 600;
+  font-variant: small-caps;
+}
+dd {
+  margin-top: -4px;
+  margin-bottom: 4px;
+  line-height: 16px;
+}
+dt + dt {
+  margin-top: 8px;
+}
+.drink dt + dt {
+  margin-top: 2px;
+}
+dd.space {
+  margin-bottom: 16px;
+}
+.menu-page {
+  position: relative;
+  width: 6.5in;
+  height: 10.5in;
+  border: 1px solid #ccc;
+  margin: 40px 0 80px 1.25in;
+  font-size: 14px;
+  vertical-align: top;
+  page-break-after: always;
+  box-sizing: border-box;
+  padding: 12px;
+}
+.menu-page.back {
+  font-size: 13px;
+  padding-top: 20px;
+}
+.price {
+  font-weight: normal;
+}
+#logo {
+  width: 360px;
+  margin: 18px auto 24px;
+  text-align: center;
+}
+#date {
+  font-size: 12px;
+}
+.food {
+  margin: 0 2em 0.75em;
+  vertical-align: top;
+}
+.food h4 {
+  font-size: 15px;
+  margin-top: 6px;
+}
+.price {
+  float: right;
+}
+.inline .food {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  margin: 0 0 8px;
+  box-sizing: border-box;
+}
+.inline .food:nth-child(odd) {
+  padding-right: 8px;
+}
+.inline .food:nth-child(even) {
+  padding-left: 8px;
+}
+.place, .title {
+  font-style: italic;
+  font-weight: normal;
+  font-variant: normal;
+  white-space: nowrap;
+  display: block;
+}
+.wine table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.wine td {
+  vertical-align: top;
+  padding-top: 5px;
+}
+.wine td:first-child {
+  font-weight: bold;
+  font-variant: small-caps;
+  width: 200px;
+}
+.wine td:last-child {
+  width: 55px;
+  text-align: right;
+}
+.wine tr:not(:last-child) td {
+  border-bottom: 1px dotted #ccc;
+}
+.slash {
+  margin: 0 1px;
+}
+.inline {
+  margin: 0 26px 10px;
+}
+.menu-page h4 {
+  border-bottom: 1px solid #888;
+  margin-bottom: 4px;
+}
+.add-proteins {
+  margin: 12px auto 0;
+  padding: 4px;
+  width: 300px;
+  border: 1px dashed #aaa;
+  text-align: center;
+}
+.add-proteins ul {
+  padding: 0;
+  display: inline-block;
+}
+.add-proteins li {
+  margin: 0 8px;
+  display: inline-block;
+  font-variant: small-caps;
+}
+.add-proteins .price {
+  margin-left: 6px;
+}
+#hella {
+  font-variant: small-caps;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 24px;
+}
+#disclosures {
+  font-size: 7px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 14px;
+}
+    </style>
+  </head>
+  <body>
+    <div id="menu-target">
+    </div>
+<script type="text/babel">
+const food = {};
+const drinks = {};
+const lunch = {};
+food.smallPlates = [
+  ['Bread & House-Cultured Butter', null, 6],
+  ['Cured Trout', 'chives, capers, crème fraîche, olive oil', 12],
+  ['Chorizo & Mussels', 'dry white wine, grilled bread', 16],
+  ['Lamb Meatballs', 'house-fermented cayenne hot sauce, labneh', 16],
+  ['Beets', 'pistachios, endive, feta cheese', 12],
+  // ['Roasted Cauliflower', 'agretti greens', 12],
+  ['Rainbow Carrots', 'brown butter, orange, pernod', 12],
+];
+lunch.sides = [
+  ['Bread & House-Cultured Butter', null, 6],
+  ['Brandied Mushrooms', null, 8],
+  ['Cured Trout', 'chives, capers, crème fraîche, olive oil', 10],
+  // ['Roasted Cauliflower', 'agretti greens', 12],
+  // ['Rainbow Carrots', 'brown butter, orange, pernod', 12],
+  ['Fries', 'béarnaise aioli', 7],
+];
+food.salads = [
+  ['Garden', 'mixed greens, smoked grapes, shaved fennel, sherry vinaigrette', 8],
+  ['Arugula & Farro', 'tomatoes, pistachios, feta, citrus vinaigrette', 10],
+  ['Caesar', 'romaine, parmesan crisps, cured egg yolk, lemon-anchovy dressing', 12],
+]
+food.mains = [
+  ['Koji-rubbed Steak', 'brandied mushrooms, roasted cauliflower', 29],
+  ['Brined Pork Chop', 'red cabbage, fennel, apple', 24],
+  // ['California King Salmon', 'israeli couscous, roasted sunchokes', 30],
+  ['McFarland Springs Trout', 'israeli couscous, sunchokes', 24],
+  ['Fried Chicken or Tofu', 'collard greens, grilled corn relish', 24],
+  // ['Fried Tofu', 'collard greens, summer corn relish', 20],
+];
+lunch.mains = [
+  ['Steak Frites', 'béarnaise aioli', 28],
+  ['Chorizo & Mussels', 'vinho verde broth, grilled bread', 18],
+  // ['Koji-rubbed Steak', 'brandied mushrooms, fun beans', 32],
+  ['Lamb Meatballs', 'orzo salad, house-fermented cayenne hot sauce', 20],
+  ['McFarland Springs Trout', 'israeli couscous, sunchokes', 24],
+  ['Fried Tofu', 'collard greens, grilled corn relish', 20],
+  ['Smash Burger', 'fries or garden salad', 12],
+  ['Beet & Quinoa Burger', 'fries or garden salad', 10],
+];
+lunch.desserts = [
+  ["Today's Donuts", null, 3.5],
+];
+food.desserts = [
+  // ['Panna Cotta', 'fruit purée', 10],
+  ['Galette', 'plum, earl grey tea', 10],
+];
+lunch.salads = food.salads;
+drinks.cocktails = [
+  ['South Park Spritz', "ford's gin, dolin génépy, pamplemousse, cucumber, lime, saline", 13],
+  // ['Golden Gate', 'grand marnier, bénédictine, campari, grapefruit, lime', 10],
+  // ['Hemingway Daiquiri', "caña brava rum, leopold's maraschino, lime, grapefruit", 10],
+  ['Mezcal Daiquiri', 'del maguey vida mezcal, lime, simple', 12],
+  ['Kentucky Maid', 'elijiah craig small batch, lime, mint, cucumber', 13],
+  // ['Brooklyn', "george dickel rye, dolin dry vermouth, amaro ciociaro, leopold's maraschino", 14],
+  ['Bobby Burns', 'bank note blended scotch, carpano antica vermouth, escubac', 14],
+  ['Sazerac', "rittenhouse rye, osocalis rare alambic brandy, peychaud’s, absinthe rinse", 14],
+];
+drinks.beer = [
+  // ['Fort Point Export Dortmunder Lager', 'San Francisco', 5],
+  ['Fort Point KSA Kölsch Ale', 'San Francisco', 5],
+  ['Anchor Steam', 'San Francisco', 5],
+  ['Fort Point Villager IPA', 'San Francisco', 5],
+];
+drinks.zeroProof = [
+  ['South Park Spritz Mocktail', 'cucumber, grapefruit, lime, seedlip garden', 12],
+  ['G&T', 'house tonic, seedlip spice', 10],
+  ['Hoptail', 'grapefruit, simcoe hop syrup, lime, yuzu bitters', 10],
+];
+drinks.soft = [
+  ['Santa Rosa Plum or Ginger Shrub', null, 4],
+  ["Reed’s Ginger Beer", null, 4],
+  ['Baladin Spuma Nera Soda', 'orange peel, chinese rhubarb, italian spices', 4],
+  ['Bubble Up', null, 4],
+  ['Squirt', null, 4],
+  // ['Topo Chico w/Grapefruit', null, 3.5],
+  ['Topo Chico', null, 3],
+];
+drinks.coffee = [
+  ['drip', null, 2.5],
+  ['espresso', null, 3],
+  ['macchiato', null, 3.5],
+  ['americano', null, 3],
+  ['cortado', null, 3.75],
+  ['cappuccino', null, 4],
+  ['latte', null, 4.5],
+  ['mocha', null, 5.5],
+  ['hot chocolate', null, 4.5],
+];
+drinks.tea = [
+  ['iced', 'green | black', 3],
+  ['green', 'sencha | jasmine', 3],
+  ['black', 'grand crimson | bergamot', 3],
+  ['herbal', 'pacific peppermint | ginger+turmeric+licorice', 3],
+];
+drinks.nonalc = drinks.zeroProof.concat(drinks.soft);
+const wine = drinks.wine = {}
+wine.bubbles = [
+  ['Glera', 'San Venanzio', 'Prosecco Valdobbiadene Superiore Brut', 'Veneto, Italy', 'NV', 11],
+];
+wine.whites = [
+  ['Chenin Blanc', 'Domaine du Petit Clocher', 'Anjou Blanc', 'Loire, France', '2017', 12],
+  ['Chardonnay', 'Olema', , 'Sonoma County, California', '2017', 13],
+];
+wine.reds = [
+  // ['Gamay', 'Domaine Jean Michel Dupre', '“Le Grottier” Morgon', 'Beaujolais, France', '2017', 12],
+  ['Pinot Noir', 'Beckon', 'Bien Nacido Vineyard', 'Santa Maria, California', '2016', 16],
+  // ['Pinot Noir', 'Carmel Road', '“South Crest” Panorama Vineyard', 'Monterey, California', '2015', 14],
+  // ['Malbec', 'Tapiz', 'Alta Collection', 'Mendoza, Argentina', 2015, 15],
+  ['Niellucciu', 'Domaine Petroni', null, 'Corsica, France', '2017', 12],
+  ['Sangiovese, Merlot, Cabernet', 'La Massa', 'Toscana', 'Tuscany, Italy', '2016', 16],
+];
+wine.dessert = [
+  ['Moscato', 'Saracco', "Moscato d'Asti", 'Piedmont, Italy', 'NV', 10],
+];
+
+lunch.wine = {
+  bubbles: [
+    ['Lambrusco', 'Cleto Chiarli', 'Vecchia Modena', 'Emilia-Romagna, Italy', '2018', 10],
+    ['Chardonnay, Pinot, Gamay', 'Prosper Maufoux', 'Crémant de Bourgogne Blanc', 'Burgundy, France', 'NV', 12],
+  ],
+  whites: [
+    ['Gruner Veltliner', 'Nigl', 'Freiheit', 'Kremstal, Austria', 2018, 12],
+    ['Sauvignon Blanc', 'Happy Canyon Vineyards', 'Piocho', 'Santa Barbara, California', 2018, 15],
+    ['Vermentino', 'La Spinetta', 'Toscana', 'Tuscany, Italy', 2018, 11],
+    ['Chardonnay', 'Bethel Heights', 'Estate', 'Eola-Amity Hills, Oregon', 2015, 14],
+  ],
+  reds: [
+    ['Sangiovese', 'Fattoria Selvapiana', null, 'Chianti Rufina, Italy', 2016, 12], 
+    ['Pinot Noir', 'Scar of the Sea', null, 'Santa Barbara, California', 2018, 15],
+    ['Syrah', 'Pax', 'North Coast', 'North Coast, California', 2017, 15],
+    ['Cabernet Sauvignon', 'Yalumba', 'Menzies Vineyard', 'Barossa Valley, Australia', 2015, 14],
+  ],
+  rose: [
+    ['Cinsault, Grenache, Syrah', 'Château Routas', 'Coteaux Varois', 'Provence, France', 2018, 10],
+  ],
+};
+lunch.cocktails = [
+  ['South Park Spritz', "ford's gin, dolin génépy, pamplemousse, cucumber, lime, saline", 12],
+  ['Tequila Eastside', 'el tesoro blanco, lime, cucumber, mint', 10],
+  ['Mezcal Daiquiri', 'del maguey vida, lime, simple', 10],
+  ['Scotch Lady', "isle of skye 8yr, laird's apple brandy, lemon, grenadine, egg white", 12],
+  ['Home on the Range', "mckenzie wheated bourbon, ferrand dry curaçao, carpano antica", 13],
+  ['Old Pal', "michter's rye, campari, dolin dry", 14],
+];
+lunch.beer = [
+  ['Harmonic Tischbier Lager', 'Dogpatch, SF', 5],
+  ['Harmonic Original Sim IPA', 'Dogpatch, SF', 6],
+  ['Saison Dupont Farmhouse Ale', 'Belgium', 6],
+  ['Hitachino Nest White Ale', 'Japan', 8],
+];
+lunch.cider = [
+  ['Le Brun Cidre de Bretagne Brut', 'France', 6],
+  // ['Scar of the Sea Bear Creek Ranch', 'Santa Cruz', 12],
+  ['Tilted Shed Inclinado Sidra', 'Sonoma', 15, '(500ml)'],
+];
+
+function Menu() {
+  return (
+    <div>
+      <LunchMenu />
+      <LunchMenuBack />
+      <DinnerMenu />
+      <LunchMenuBack />
+      {/* <DinnerMenuBack /> */}
+    </div>
+  );
+}
+
+function Logo({date}) {
+  return (
+    <div id="logo">
+      <img src="logo.svg" />
+      <div id="date">{date}</div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <div>
+      <div id="hella">hella tight</div>
+      <div id="disclosures">
+        <span id="undercooked">Consuming raw or undercooked proteins may increase your risk of foodborne illness.</span>
+        {' '}
+        <span id="mandate">A 3% SF Business Mandate surcharge will be added to your bill.</span>
+      </div>
+    </div>
+  );
+}
+
+function DinnerMenu() {
+  return (
+    <div id="menu-front" className="menu-page">
+      <Logo date="September 2019: Dinner" />
+      <div>
+        <FoodSection title="Salads" content={food.salads} />
+        <FoodSection title="Small Plates" content={food.smallPlates} />
+        <FoodSection title="Mains" content={food.mains} />
+        <div className="inline">
+          <DrinkSection title="Beer" content={lunch.beer} />
+          <DrinkSection title="Cider" content={lunch.cider} />
+        </div>
+        <Footer />
+      </div>
+    </div>
+  );
+}
+
+function LunchMenu() {
+  return (
+    <div id="lunch-menu" className="menu-page">
+      <Logo date="September 2019: Lunch" />
+      <FoodSection title="Salads" content={lunch.salads} proteins={true} />
+      <FoodSection title="Mains" content={lunch.mains} />
+      <FoodSection title="Sides" content={lunch.sides} />
+      <FoodSection title="Dessert" content={lunch.desserts} />
+      <div className="inline">
+        <DrinkSection title="Beer" content={lunch.beer} />
+        <DrinkSection title="Cider" content={lunch.cider} />
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+function LunchMenuBack() {
+  return (
+    <div id="lunch-back" className="menu-page back">
+      <DrinkSection title="Cocktails" content={lunch.cocktails} />
+      <div id="wines" className="food drink">
+        <WineSection title="Bubbles" wines={lunch.wine.bubbles} />
+        <WineSection title="Rosé" wines={lunch.wine.rose} />
+        <WineSection title="White" wines={lunch.wine.whites} />
+        <WineSection title="Red" wines={lunch.wine.reds} />
+      </div>
+      <div className="inline">
+        <DrinkSection title="Soft" content={drinks.soft} />
+        <DrinkSection title="Zero Proof" content={drinks.zeroProof} />
+        {/*
+        <DrinkSection title="Coffee" content={drinks.coffee} />
+        <DrinkSection title="Tea" content={drinks.tea} />
+        */}
+      </div>
+    </div>
+  );
+}
+
+function DinnerMenuBack() {
+  return (
+    <div id="menu-back" className="menu-page back">
+      <CocktailMenu />
+      <WineMenu />
+      <BeerMenu />
+    </div>
+  );
+}
+
+function CocktailMenu() {
+  return <DrinkSection title="Cocktails" content={drinks.cocktails} />;
+}
+
+function WineMenu() {
+  return (
+    <div id="wines" className="food drink">
+      <WineSection title="Bubbles" wines={wine.bubbles} />
+      <WineSection title="White" wines={wine.whites} />
+      <WineSection title="Red" wines={wine.reds} />
+      <WineSection title="Dessert" wines={wine.dessert} />
+    </div>
+  );
+}
+
+function WineSection({title, wines}) {
+  return (
+    <div className="wine">
+      <h4>{title}</h4>
+      <table>
+        <tbody>
+          {wines.map((w, i) => <WineItem wine={w} key={i} />)}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function WineItem({wine}) {
+  const [grape, producer, title, place, vintage, glassPrice] = wine;
+  const bottlePrice = Math.floor(glassPrice * 3.2);
+  return (
+    <tr>
+      <td><span className="grape">{grape}</span> <span className="place">{place} {vintage}</span></td>
+      <td><span className="producer">{producer}</span> <span className="title">{title}</span></td>
+      <td>${glassPrice}<span className="slash">/</span>${bottlePrice}</td>
+    </tr>
+  );
+}
+
+function BeerMenu() {
+  return (
+    <div className="inline">
+      <DrinkSection title="Beer" content={drinks.beer} />
+      <DrinkSection title="Zero Proof" content={drinks.zeroProof.concat(drinks.soft)} />
+    </div>
+  );
+}
+
+function FoodSection({title, content, proteins, isDrinks}) {
+  return (
+    <div className={isDrinks ? "food drink" : "food"}>
+      <h4>{title}</h4>
+      <dl>
+        {content.map((x, i) => <FoodItem food={x} key={i} />)}
+      </dl>
+      {proteins ? <AddProteins /> : null}
+    </div>
+  );
+}
+
+function DrinkSection(props) {
+  return <FoodSection isDrinks={true} {...props} />
+}
+
+lunch.proteins = [
+  ['Fried Tofu', 4],
+  ['Grilled Steak', 6],
+  ['Grilled Chicken', 4],
+  ['Seared Trout', 6],
+];
+
+class AddProteins extends React.Component {
+  render() {
+    return (
+      <div className="add-proteins">
+        <span>Add a protein to any salad:</span>
+        <ul>
+          {lunch.proteins.map(([meat, price], i) => 
+            <li key={i}>{meat} <span className="price">+${price}</span></li>
+          )}
+        </ul>
+      </div>
+    );
+  }
+}
+
+function FoodItem(props) {
+  const [food, desc, price, extra] = props.food;
+  return (
+    <React.Fragment>
+      <dt>{food} <span className="price">${price}</span></dt>
+      {desc ? <dd>{desc} {extra ? <small>{extra}</small> : null}</dd> : null}
+    </React.Fragment>
+  );
+}
+
+ReactDOM.render(<Menu />, document.getElementById('menu-target'));
+</script>
+  </body>
+<html>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>South Park Cafe Wine Menu</title>
+    <title>SPC Wine Menu</title>
     <script src="https://unpkg.com/d3@5.9.2/dist/d3.js" crossorigin></script>
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
@@ -280,13 +280,23 @@ function loc(w) {
 function priceLabel(w) {
   const price = Math.round((w['Price'] || w['Per Oz']).replace(/\$/, ''));
   if (w.Type == 'Dessert') return '$' + price;
-  else if (w['Per Oz']) return '$' + Math.round(w['Per Oz'] * 6);
+  else if (w['Per Oz']) return '$' + (+w['Per Oz']) + '#' + spiritPrice(2 * +w['Per Oz']) + '#' + Math.round(+w['Per Oz']*25.36,2) + '#' + Math.round(spiritPrice(2 * w['Per Oz'])*12);
   else if (w.Type == 'Cider') return '$' + Math.floor(1.5 * price);
   else if (w.Type == 'Beer') return '$' + Math.floor(price);
   else if (w.isSpirit) return '$' + Math.floor(price / 12 * 2.5);
   else if (w.btg) return '$' + price + '/$' + Math.floor(price * 3.4);
   else return '$' + Math.floor(priceCalculator(price));
 }
+
+function priceCalculator(x) {
+  const ceiling = 150;
+  return Math.floor(x + Math.min(x * Math.log(ceiling)/Math.log(x), ceiling));
+}
+
+function spiritPrice(x) {
+  return Math.round(Math.max(x, 1) * (Math.log(80) / Math.log(Math.max(x, 2.75))));
+}
+
 
 class Drink extends React.Component {
   render() {
@@ -343,12 +353,6 @@ class Cocktail extends React.Component {
       </div>
     );
   }
-}
-
-function priceCalculator(x) {
-  const log = Math.log;
-  const ceiling = 150;
-  return Math.floor(x + Math.min(x * log(ceiling)/log(x), ceiling));
 }
 
 /*

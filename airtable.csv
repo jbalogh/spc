@@ -1,0 +1,167 @@
+﻿Key,Producer,Product,Place,Region,Country,Grape,Vintage,Category,ABV,BTG,List Position,Bottle Price,Wholesale Price,BTG Price,BTG Bottle Price,Beer Price,Cider Price,Spirit Price
+harmonic-tischbier,Harmonic,Tischbier Lager,San Francisco,,,,,Beer,,,1,$16,$2.25,$2,$7,$5,$4,$1
+unibroue-findumonde-tripel,Unibroue,La Fin du Monde Tripel,Montreal,,,,,Beer,,,5,$16,$2.35,$2,$7,$5,$4,$2
+baladin-spuma-nera,Baladin,Spuma Nera Amaro Soda,,Piedmont,Italy,,,Soda,,,,$16,$2.40,$2,$8,$5,$4,$2
+dupont-farmhouse,Saison Dupont,Farmhouse Ale,,,Belgium,,,Beer,,,4,$16,$2.55,$2,$8,$6,$4,$2
+harmonic-original-sim-ipa,Harmonic,Original Sim IPA,San Francisco,,,,,Beer,,,2,$16,$3.00,$3,$10,$6,$5,$2
+petrus-aged-pale,Petrus,Aged Pale Ale,,,Belgium,,,Beer,,,,$17,$3.43,$3,$11,$7,$6,$2
+hitachino-white,Hitachino Nest,White Ale,,,Japan,,,Beer,,,3,$17,$3.72,$3,$12,$8,$6,$2
+brun-bretagne,Le Brun,Cidre de Bretagne Brut,,Brittany,France,,,Cider,,,10,$17,$3.63,$3,$12,$8,$6,$2
+duchesse-bourgogne,Duchesse de Bourgogne,Flemish Red,,,Belgium,,,Beer,,,,$18,$4.25,$4,$14,$9,$7,$3
+eugen-miller-vom-basalt-15,Eugen Müller,Vom Basalt Kabinett,,Pfalz,Germany,Riesling,2015,White,,checked,20,$27,$8.00,$8,$27,$16,$12,$2
+scar-sea-cider-bearcreek-17,Scar of the Sea,Bear Creek Ranch Cider,Santa Cruz,,,,,Cider,,,,$27,$8.17,$8,$27,$17,$13,$4
+routas-rose-18,Château Routas,Coteaux Varois,,Provence,France,"Cinsault,Grenache,Syrah",2018,Rosé,,checked,10,$31,$10.00,$10,$34,$20,$15,$3
+lageder-alpina-18,Alois Lageder,Terra Alpina,,Alto Adige,Italy,Pinot Grigio,2018,White,,,5,$31,$10.00,$10,$34,$20,$15,$3
+adami-garbel,Adami,Garbèl Prosecco,,Treviso,Italy,Glera,NV,Bubbles,,,10,$32,$10.50,$10,$35,$21,$16,$3
+cleto-lambrusco-18,Cleto Chiarli,Vecchia Modena,,Emilia-Romagna,Italy,Lambrusco,2018,Bubbles,,checked,30,$32,$10.35,$10,$35,$21,$16,$3
+cortese-barbera-16,Cortese,Barbera d'Alba,,Piedmont,Italy,Barbera,2016,Red,,,35,$32,$10.50,$10,$35,$21,$16,$3
+vietti-moscato-18,Vietti,Moscato d'Asti,,Piedmont,Italy,Moscato,2018,Dessert,,,1,$33,$10.67,$10,$36,$22,$16,$3
+dolin-blanc,Dolin,Blanc,,,France,,,Vermouth,16.0,,,$33,$10.67,$10,$36,$22,$16,$3
+dolin-rouge,Dolin,Rouge,,,France,,,Vermouth,17.5,,,$33,$10.67,$10,$36,$22,$16,$3
+dolin-dry,Dolin,Dry,,,France,,,Vermouth,17.5,,,$33,$10.67,$10,$36,$22,$16,$3
+spinetta-toscana-18,La Spinetta,Toscana,,Tuscany,Italy,Vermentino,2018,White,,checked,10,$34,$11.33,$11,$38,$23,$17,$3
+noilly-vermouth-dry,Noilly Prat,Vermouth Extra Dry,,,France,,,Vermouth,18.0,,,$34,$11.31,$11,$38,$23,$17,$3
+selvapiana-rufina-16,Fattoria Selvapiana,,Chianti Rùfina,Tuscany,Italy,Sangiovese,2016,Red,,checked,20,$35,$11.50,$11,$39,$23,$18,$3
+tilted-shed-inclinado-18,Tilted Shed,Inclinado Basque-Style Cider,Sonoma,,,,,Cider,,,15,$35,$11.50,$11,$39,$23,$18,$5
+ruhlman-riesling-17,Domaine Ruhlman,Cuvée Jean-Charles,,Alsace,France,Riesling,2017,White,,,10,$36,$12.00,$12,$40,$24,$18,$3
+nigl-gruner-freiheit-18,Nigl,Freiheit,,Kremstal,Austria,Grüner Veltliner,2018,White,,checked,30,$36,$12.00,$12,$40,$24,$18,$3
+maufoux-cremant-nv,Prosper Maufoux,Crémant de Bourgogne Blanc,,Burgundy,France,"Chardonnay,Pinot Noir,Gamay",NV,Bubbles,,checked,50,$36,$12.00,$12,$40,$24,$18,$3
+pegau-maclura-16,Château Pégau,Cuvée Maclura,,Côtes du Rhône,France,"Grenache,Syrah,Mourvédre",2016,Red,,,30,$36,$12.33,$12,$41,$25,$19,$3
+ransom-sweet-vermouth,Ransom,Sweet Vermouth,,Oregon,,,,Vermouth,17.8,,,$39,$13.33,$13,$45,$27,$20,$7
+sandeman-ruby-port,Sandeman,Fine Ruby Port,,,Portugal,,,Port,19.5,,,$40,$13.75,$13,$46,$28,$21,$4
+comoz-vermouth-blanc,Comoz,Vermouth de Chambery Blanc,,,France,,,Vermouth,16.0,,,$39,$13.67,$13,$46,$28,$21,$4
+tete-julienas-tradition-16,Michel Tête,Cuvée Tradition,Julienas,Beaujolais,France,Gamay,2016,Red,,,10,$40,$14.00,$14,$47,$28,$21,$4
+bouchard-bourgogne-rouge-17,Bouchard Père et Fils,Bourgogne Rouge Réserve,,Burgundy,France,Pinot Noir,2017,Red,,,40,$40,$14.00,$14,$47,$28,$21,$4
+bethel-chard-estate-14,Bethel Heights,Estate,Eola-Amity Hills,Oregon,USA,Chardonnay,2015,White,,checked,50,$41,$14.50,$14,$49,$29,$22,$4
+quintinye-vermouth-dry,La Quintinye,Royal Vermouth Extra Dry,,,France,,,Vermouth,17.0,,,$41,$14.50,$14,$49,$29,$22,$7
+yalumba-menzies-13,Yalumba,Menzies Vineyard,,Coonawarra,Australia,Cabernet Sauvignon,2013,Red,,checked,50,$42,$14.92,$14,$50,$30,$23,$4
+alessio-vermouth-torino,Alessio,Vermouth di Torino,,,Italy,,,Vermouth,17.0,,,$42,$14.90,$14,$50,$30,$23,$8
+reverdy-sancerre-18,Romain Reverdy,,,Sancerre,France,Sauvignon Blanc,2018,White,,,,$43,$15.17,$15,$51,$31,$23,$4
+coulaine-bonnaventure-15,Château de Coulaine,Bonnaventure,,Chinon,France,Cabernet Franc,2015,Red,,,15,$42,$15.00,$15,$51,$30,$23,$4
+lumen-pinot-15,Lumen,,Santa Barbara,California,USA,Pinot Noir,2015,Red,,,45,$42,$15.00,$15,$51,$30,$23,$4
+pax-syrah-northcoast-17,Pax,North Coast,North Coast,California,USA,Syrah,2017,Red,,checked,40,$42,$15.00,$15,$51,$30,$23,$4
+capelletti-apertivo,Cappelletti,Apertivo,,,Italy,,,Apertivo,17.0,,,$43,$15.25,$15,$51,$31,$23,$4
+yalumba-muscat-nv,Yalumba,Museum Muscat,,Barossa Valley,Australia,Muscat,NV,Dessert,,,2,$43,$15.50,$15,$52,$31,$24,$8
+cocchi-americano,Cocchi,Americano,,,Italy,,,Apertivo,16.5,,,$44,$15.58,$15,$52,$32,$24,$4
+meletti-amaro,Meletti,Amaro Meletti,,,Italy,,,Amaro,32.0,,,$43,$15.50,$15,$52,$31,$24,$4
+cocchi-vermouth-torino,Cocchi,Vermouth di Torino,,,Italy,,,Vermouth,16.0,,,$44,$15.75,$15,$53,$32,$24,$4
+piocho-sb-18,Happy Canyon Vineyard,Piocho,Santa Barbara,California,USA,"Sauvignon Blanc,Sémillon",2018,White,,checked,40,$44,$16.00,$16,$54,$32,$24,$4
+scar-sea-pinot-18,Scar of the Sea,,Santa Barbara,California,USA,Pinot Noir,2018,Red,,checked,10,$44,$16.00,$16,$54,$32,$24,$4
+byrhh-quinquina,Byrhh,Grand Quinquina,,,France,,,Apertivo,18.0,,,$45,$16.17,$16,$54,$33,$25,$4
+amaro-ciociaro,Paolucci,Amaro CioCiaro,,,Italy,,,Amaro,30.0,,,$45,$16.50,$16,$56,$33,$25,$4
+lieu-dit-chenin-17,Lieu Dit,,Santa Ynez,California,USA,Chenin Blanc,2017,White,,,20,$47,$17.00,$17,$57,$34,$26,$5
+lillet-blanc,Lillet,Blanc,,,France,,,Apertivo,17.0,,,$46,$16.83,$16,$57,$34,$26,$5
+lillet-rouge,Lillet,Rouge,,,France,,,Apertivo,17.0,,,$46,$16.83,$16,$57,$34,$26,$5
+vietti-arneis-18,Vietti,Roero Arneis,,Piedmont,Italy,Arneis,2018,White,,,40,$47,$17.11,$17,$58,$35,$26,$5
+amaro-sfumato,Cappelletti,Amaro Sfumato Rabarbo,,,Italy,,,Amaro,40.0,,,$47,$17.25,$17,$58,$35,$26,$5
+smith-cross-jamaican-rum,Smith & Cross,Jamaican Rum,,,Jamaica,,,Rum,57.0,,,$47,$17.17,$17,$58,$35,$26,$5
+morat-pouilly-16,Domaine Morat,Terroirs de Vergisson,Pouilly-Fuissé,Burgundy,France,Chardonnay,2016,White,,,50,$49,$18.17,$18,$61,$37,$28,$5
+elijah-craig-bourbon,Elijah Craig,Small Batch Bourbon,,Kentucky,,,,Bourbon,47.0,,,$49,$18.10,$18,$61,$37,$28,$5
+buffalo-trace-bourbon,Buffalo Trace,Kentucky Straight Bourbon,,Kentucky,,,,Bourbon,45.0,,,$49,$18.10,$18,$61,$37,$28,$5
+liquid-farm-vogelzang-18,Liquid Farm,Vogelzang Vineyard,Santa Barbara,California,USA,"Mourvédre,Grenache",2018,Rosé,,,10,$50,$18.50,$18,$62,$37,$28,$5
+lady-sunshine-sb-coquelicot-18,Lady of the Sunshine,Coquelicot Vineyard,Santa Ynez,California,USA,Sauvignon Blanc,2018,White,,,15,$52,$19.50,$19,$66,$39,$30,$5
+carpano-puntemes,Carpano,Punt e Mes,,,Italy,,,Vermouth,16.5,,,$52,$19.50,$19,$66,$39,$30,$5
+pueblo-anejo,Pueblo Viejo,Añejo,,,Mexico,,,Tequila,40.0,,,$52,$19.49,$19,$66,$39,$30,$5
+alessio-chinato,Alessio,Vino Chinato,,,Italy,,,Digestivo,17.0,,,$53,$19.90,$19,$67,$40,$30,$10
+square-one-organic-vodka,Square One,Organic Vodka,,California,,,,Vodka,40.0,,,$53,$20.00,$20,$68,$40,$30,$5
+sazerac-rye,Sazerac,Straight Rye,,Kentucky,,,,Rye,45.0,,,$55,$20.98,$20,$71,$42,$32,$6
+lofi-dry,Lo-Fi,Dry Vermouth,,California,,,,Vermouth,16.5,,,$56,$21.40,$21,$72,$43,$33,$6
+tolaini-valdisanti-14,Tolaini,Valdisanti Toscana,,Tuscany,Italy,"Cabernet Sauvignon,Sangiovese",2014,Red,,,170,$56,$21.50,$21,$73,$43,$33,$6
+gaucher-brut-nv,Bernard Gaucher,Brut Réserve,,Champagne,France,"Pinot Noir,Chardonnay",NV,Bubbles,,,10,$57,$22.00,$22,$74,$44,$33,$6
+averna-amaro,Averna,Amaro,,,Italy,,,Amaro,32.0,,,$57,$22.00,$22,$74,$44,$33,$6
+seedlip-spice,Seedlip,Spice,,,England,,,Non-Alcoholic,0.0,,,$58,$22.50,$22,$76,$45,$34,$6
+seedlip-garden,Seedlip,Garden,,,England,,,Non-Alcoholic,0.0,,,$58,$22.50,$22,$76,$45,$34,$6
+maguey-vida,Del Maguey,Vida,,,Mexico,,,Mezcal,42.0,,,$59,$23.00,$23,$78,$46,$35,$6
+palmina-nebbiolo-14,Palmina,,Santa Barbara,California,USA,Nebbiolo,2014,Red,,,95,$61,$24.00,$24,$81,$48,$36,$6
+fernet-branca,Fernet,Branca,,,Italy,,,Amaro,39.0,,,$62,$24.25,$24,$82,$49,$37,$6
+pinson-foret-16,Domaine Pinson,La Forêt Premier Cru,,Chablis,France,Chardonnay,2016,White,,,45,$63,$24.67,$24,$83,$50,$38,$6
+stgeorge-bruto,St. George,Bruto Americano,Alameda,,,,,Apertivo,24.0,,,$62,$24.50,$24,$83,$49,$37,$6
+carpano-antica-vermouth,Carpano,Antica Formula Vermouth,,,Italy,,,Vermouth,16.5,,,$64,$25.35,$25,$86,$51,$39,$5
+scar-sea-chard-seven-leagues-17,Scar of the Sea,Seven Leagues,Santa Maria Valley,California,USA,Chardonnay,2017,White,,,50,$65,$25.65,$25,$87,$52,$39,$7
+suze-apertif,Suze,Apertif,,,France,,,Apertivo,20.0,,,$65,$26.00,$26,$88,$52,$39,$7
+teeling-small-batch,Teeling,Small Batch,,,Ireland,,,Irish Whiskey,46.0,,,$66,$26.33,$26,$89,$53,$40,$7
+junipero-gin,Junípero,,San Francisco,,,,,Gin,49.3,,,$67,$26.67,$26,$90,$54,$41,$7
+lairds-straight-bonded,Laird's,Straight Apple Brandy,,New Jersey,,,,Brandy,50.0,,,$68,$27.00,$27,$91,$54,$41,$7
+stgeorge-terroir,St. George,Terroir,Alameda,,,,,Gin,45.0,,,$68,$27.29,$27,$92,$55,$41,$7
+stgeorge-botanivore,St. George,Botanivore,Alameda,,,,,Gin,45.0,,,$68,$27.29,$27,$92,$55,$41,$7
+aperol-apertivo,Aperol,Apertivo,,,Italy,,,Apertivo,11.0,,,$69,$27.83,$27,$94,$56,$42,$6
+ransom-old-tom,Ransom,Old Tom,,Oregon,,,,Gin,44.0,,,$70,$28.00,$28,$95,$56,$42,$7
+tesoro-blanco,El Tesoro,Blanco,,,Mexico,,,Tequila,40.0,,,$70,$28.00,$28,$95,$56,$42,$7
+ryme-ribolla-16,Ryme Cellars,Vare Vineyard,Napa,California,USA,Ribolla Gialla,2016,White,,,150,$72,$29.00,$29,$98,$58,$44,$7
+campari-apertivo,Campari,Apertivo,,,Italy,,,Apertivo,24.0,,,$73,$29.50,$29,$100,$59,$45,$6
+tesoro-reposado,El Tesoro,Reposado,,,Mexico,,,Tequila,40.0,,,$74,$30.00,$30,$102,$60,$45,$8
+leopold-navy-gin,Leopold,Navy Strength,,Colorado,,,,Gin,57.0,,,$74,$30.33,$30,$103,$61,$46,$8
+duffau-armagnac-napoleon,Marie Duffau,Bas-Armagnac Napoleon,,,France,,,Armagnac,40.0,,,$74,$30.33,$30,$103,$61,$46,$8
+rhum-jm-vo,Rhum J.M.,VO Rhum Agricole,,,Martinique,,,Rum,40.0,,,$75,$30.53,$30,$103,$62,$46,$8
+clement-vsop-rhum,Clément,VSOP Rhum Agricole,,,Martinique,,,Rum,40.0,,,$74,$30.39,$30,$103,$61,$46,$8
+badia-vin-santo,Badia a Coltibuono,Vin Santo,Chianti Classico,Tuscany,Italy,"Trebbiano,Malvasia",2010,Dessert,,,,$78,$32.00,$32,$108,$64,$48,$16
+stgeorge-dryrye-reposado,St. George,Dry Rye Reposado,Alameda,,,,,Gin,45.0,,,$78,$32.00,$32,$108,$64,$48,$8
+plymouth-gin,Plymouth,,,,England,,,Gin,41.2,,,$78,$32.17,$32,$109,$65,$49,$6
+mckenzie-wheated-bourbon,McKenzie,Wheated Bourbon,Finger Lakes,New York,,,,Bourbon,50.0,,,$79,$32.50,$32,$110,$65,$49,$8
+michters-bourbon,Michter's,US-1 Kentucky Straight Bourbon,,Kentucky,,,,Bourbon,45.7,,,$80,$33.14,$33,$112,$67,$50,$8
+michters-american,Michter's,US-1 American Whiskey,,Kentucky,,,,American Whiskey,41.7,,,$80,$33.14,$33,$112,$67,$50,$8
+michters-rye,Michter's,US-1 Kentucky Straight Rye,,Kentucky,,,,Rye,42.4,,,$80,$33.15,$33,$112,$67,$50,$8
+redwood-emerald-rye,Redwood Empire,Emerald Giant Rye,,California,,,,Rye,45.0,,,$81,$33.40,$33,$113,$67,$51,$9
+cynar-apertif,Cynar,Artichoke Apertivo,,,Italy,,,Apertivo,35.0,,,$81,$33.75,$33,$114,$68,$51,$7
+dry-fly-wheat-whiskey,Dry Fly,Cask Strength Wheat Whiskey,,Washington,,,,American Whiskey,60.0,,,$82,$33.89,$33,$115,$68,$51,$9
+barsol-pisco-mosto,Barsol,Pisco Mosto Verde,,,Peru,,,Brandy,41.8,,,$82,$34.33,$34,$116,$69,$52,$9
+glenfiddich-single-12yr,Glenfiddich,Single Malt 12yr,,Speyside,,,,Scotch Whisky,40.0,,,$82,$34.25,$34,$116,$69,$52,$9
+ferrand-cognac-ambre,Pierre Ferrand,Ambre 10yr,,,France,,,Cognac,40.0,,,$83,$34.67,$34,$117,$70,$52,$9
+dorado-rum-12yr,El Dorado,Demerara 12yr,,,Guyana,,,Rum,40.0,,,$85,$35.67,$35,$121,$72,$54,$9
+fiorita-brunello-14,La Fiorita,Brunello di Montalcino,,Tuscany,Italy,Sangiovese,2014,Red,,,160,$86,$36.00,$36,$122,$72,$54,$9
+avua-amburana,Avuá,Amburana Cachaça,,,Brazil,,,Rum,40.0,,,$86,$36.00,$36,$122,$72,$54,$9
+kenefick-merlot-15,Kenefick Ranch,,Napa,California,USA,Merlot,2015,Red,,,180,$86,$36.25,$36,$123,$73,$55,$9
+clear-creek-pear-brandy,Clear Creek,Pear Brandy,,Oregon,,,,Brandy,40.0,,,$87,$36.50,$36,$124,$73,$55,$9
+amaro-nonino,Nonino,Quintessentia Amaro,,,Italy,,,Amaro,35.0,,,$88,$37.00,$37,$125,$74,$56,$9
+nikka-coffey-gin,Nikka,Coffey,,,Japan,,,Gin,47.0,,,$88,$37.00,$37,$125,$74,$56,$9
+blandys-bual-colheita-02,Blandy's,Bual Colheita 2002,,Madeira,Portugal,Bual,2002,Madeira,,,,$89,$37.40,$37,$127,$75,$57,$14
+blandys-sercial-02,Blandy's,Sercial 2002,,Madeira,Portugal,Sercial,2002,Madeira,,,,$89,$37.40,$37,$127,$75,$57,$14
+fortaleza-blanco,Fortaleza,Blanco,,,Mexico,,,Tequila,40.0,,,$89,$37.55,$37,$127,$76,$57,$10
+sipsmith-gin-vjop,Sipsmith,London Dry VJOP,,,England,,,Gin,57.7,,,$90,$38.30,$38,$130,$77,$58,$10
+corbin-merced-rye,Corbin Cash,Merced Rye,,California,,,,Rye,45.0,,,$92,$39.00,$39,$132,$78,$59,$10
+dudognon-cognac-reserve,Dudognon,Réserve 10yr,,,France,,,Cognac,40.0,,,$93,$39.60,$39,$134,$80,$60,$10
+billecart-brut-nv,Billecart-Salmon,Brut Réserve,,Champagne,France,"Pinot Noir,Chardonnay,Pinot Meunier",NV,Bubbles,,,50,$94,$39.90,$39,$135,$80,$60,$10
+failla-chard-haynes-16,Failla,Haynes Vineyard,Coombsville,California,USA,Chardonnay,2016,White,,,90,$94,$40.00,$40,$136,$80,$60,$10
+starward-nova-whisky,Starward,Nova Whisky,,,Australia,,,Australian Whisky,41.0,,,$96,$41.00,$41,$139,$82,$62,$10
+jonata-miel-nv,Jonata,Le Miel,Santa Ynez,California,USA,Sémillon,NV,Dessert,,,,$98,$42.00,$42,$142,$84,$63,$21
+noahs-mill-bourbon,Noah's Mill,,,Kentucky,,,,Bourbon,57.0,,,$100,$43.17,$43,$146,$87,$65,$11
+blandys-malmsey-colheita-99,Blandy's,Malmsey Colheita 1999,,Madeira,Portugal,Malmsey,1999,Madeira,,,,$103,$44.40,$44,$150,$89,$67,$16
+lqf-golden-slope-11,Liquid Farm,Golden Slope,Sta. Rita Hills,California,USA,Chardonnay,2011,White,,,95,$104,$45.00,$45,$153,$90,$68,$11
+bowmore-single-12,Bowmore,Single Malt 12yr,,Islay,,,,Scotch Whisky,40.0,,,$104,$45.00,$45,$153,$90,$68,$11
+askaig-single-malt-8,Port Askaig,Islay Single Malt,,Islay,,,,Scotch Whisky,45.8,,,$105,$45.50,$45,$154,$91,$69,$11
+duffau-armagnac-hors,Marie Duffau,Bas-Armagnac Hors d'Age,,,France,,,Armagnac,40.0,,,$106,$46.00,$46,$156,$92,$69,$12
+chartreuse-green,Chartreuse,Green,,,France,,,Liqueur,55.0,,,$106,$46.00,$46,$156,$92,$69,$12
+laphroaig-quarter-cask,Laphroaig,Quarter Cask Islay Single Malt,,Islay,,,,Scotch Whisky,48.0,,,$108,$47.17,$47,$160,$95,$71,$12
+lemorton-calvados-reserve,Lemorton,Réserve 6yr,,,France,,,Calvados,40.0,,,$109,$47.70,$47,$162,$96,$72,$12
+westland-single,Westland,American Single Malt,Seattle,,,,,American Whiskey,46.0,,,$112,$49.00,$49,$166,$98,$74,$12
+varnelli-amaro-erborista,Varnelli,Amaro Dell'Erborista,,,Italy,,,Amaro,21.0,,,$114,$50.00,$50,$170,$100,$75,$9
+cocchi-chinato,Cocchi,Barolo Chinato,,,Italy,,,Digestivo,16.5,,,$114,$50.00,$50,$170,$100,$75,$9
+nikka-coffey-whisky,Nikka,Coffey Grain Whisky,,,Japan,,,Japanese Whisky,45.0,,,$120,$53.17,$53,$180,$107,$80,$13
+littorai-wendling-17,Littorai,Wendling Vineyard,Anderson Valley,California,USA,Pinot Noir,2017,Red,,,75,$120,$53.50,$53,$181,$107,$81,$13
+huard-calvados-hors,Huard,Hors d'Age 10yr,,,France,,,Calvados,40.0,,,$123,$55.00,$55,$187,$110,$83,$14
+hibiki-harmony,Hibiki,Harmony,,,Japan,,,Japanese Whisky,43.0,,,$123,$55.10,$55,$187,$111,$83,$14
+pernod-absinthe,Pernod,Absinthe,,,France,,,Liqueur,68.0,,,$128,$57.67,$57,$196,$116,$87,$14
+balvenie-single-12,Balvenie,Single Barrel First Fill Single Malt 12yr,,Speyside,,,,Scotch Whisky,47.8,,,$130,$58.33,$58,$198,$117,$88,$14
+tradicion-amontillado-vors,Bodegas Tradición,Amontillado VORS 30yr,,Jerez,Spain,Sherry,NV,Sherry,,,,$133,$60.00,$60,$204,$120,$90,$15
+matsui-mizunara,Matsui,Mizunara Cask Single Malt,,,Japan,,,Japanese Whisky,48.0,,,$139,$63.00,$63,$214,$126,$95,$16
+murrieta-gran-reserva-09,Marqués de Murrieta,Castillo Ygay Gran Reserva,,Rioja,Spain,Tempranillo,2009,Red,,,150,$141,$64.00,$64,$217,$128,$96,$16
+fortaleza-anejo,Fortaleza,Añejo,,,Mexico,,,Tequila,40.0,,,$143,$65.30,$65,$222,$131,$98,$16
+laurel-glen-cab-08,Laurel Glen,Sonoma Mountain,Sonoma,California,USA,Cabernet Sauvignon,2008,Red,,,210,$152,$70.00,$70,$238,$140,$105,$17
+yamazaki-single-12yr,Yamazaki,Single Malt 12yr,,,Japan,,,Japanese Whisky,43.0,,,$156,$72.00,$72,$244,$144,$108,$18
+dudognon-cognac-vielle,Dudognon,Vielle Réserve 20yr,,,France,,,Cognac,40.0,,,$158,$72.90,$72,$247,$146,$110,$18
+cadenhead-ord-2006,Cadenhead,Ord Single Malt 2006 11yr,,Highlands,,,,Scotch Whisky,54.8,,,$162,$75.00,$75,$255,$150,$113,$18
+tradicion-cortado-vors,Bodegas Tradición,Palo Cortado VORS,,Jerez,Spain,Sherry,NV,Sherry,,,,$167,$78.00,$78,$265,$156,$117,$19
+pellehaut-vintage-94,Château de Pellehaut,1994 Vintage Armagnac,,,France,,,Armagnac,48.5,,,$173,$81.00,$81,$275,$162,$122,$20
+signatory-auchentoshan-2000,Signatory,Auchentoshan Single Malt 18yr,,Lowlands,,,,Scotch Whisky,46.0,,,$178,$84.00,$84,$285,$168,$126,$21
+osocalis-xo-brandy,Osocalis,XO Alambic Brandy,,California,,,,Brandy,40.0,,,$187,$88.50,$88,$300,$177,$133,$22
+mayacamas-veeder-cab-14,Mayacamas,Mt Veeder,Napa,California,USA,Cabernet Sauvignon,2014,Red,,,220,$190,$90.00,$90,$306,$180,$135,$22
+pmichael-caprice-17,Peter Michael,Le Caprice,Fort Ross-Seaview,California,USA,Pinot Noir,2017,Red,,,80,$190,$90.00,$90,$306,$180,$135,$22
+edradour-sauternes-10,Edradour,Highland Single Malt 12yr Sauternes Finish,,Highlands,,,,Scotch Whisky,60.7,,,$218,$105.00,$105,$357,$210,$158,$26
+highland-park-single-18,Highland Park,Single Malt 18yr,,Islands,,,,Scotch Whisky,43.0,,,$228,$110.58,$110,$375,$222,$166,$27
+arlot-nsg-96,Domaine de l'Arlot,Clos des Forêts Premier Cru,Nuits St. Georges,Burgundy,France,Pinot Noir,1996,Red,,,85,$241,$118.00,$118,$401,$236,$177,$29
+chartreuse-green-vep,Chartreuse,VEP Green,,,France,,,Liqueur,54.0,,,$259,$127.83,$127,$434,$256,$192,$24
+chartreuse-yellow-vep,Chartreuse,VEP Yellow,,,France,,,Liqueur,42.0,,,$259,$127.83,$127,$434,$256,$192,$24
+ferrand-cognac-30yr,Pierre Ferrand,Sélection des Anges 30yr,,,France,,,Cognac,40.0,,,$296,$148.00,$148,$503,$296,$222,$36
+siete-dantano-tequila,Siete Leguas,D'Antano Extra Añejo,,,Mexico,,,Tequila,38.0,,,$350,$200.00,$200,$680,$400,$300,$48
+cristal-08,Louis Roederer,Cristal Brut,,Champagne,France,"Pinot Noir,Chardonnay",2008,Bubbles,,,100,$368,$218.67,$218,$743,$438,$329,$53
+cadenhead-caolila-1984,Cadenhead,Caol Ila Single Malt 1984 34yr,,Islay,,,,Scotch Whisky,51.0,,,$472,$322.00,$322,"$1,094",$644,$483,$78
