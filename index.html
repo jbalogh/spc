@@ -7,34 +7,93 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT Serif&display=swap" rel="stylesheet">
     <style>
+* {
+  margin: 0;
+  padding: 0;
+}
 #main {
-  width: 1000px;
+  width: 11in;
+  height: 8.5in;
   margin: 0 auto;
   text-align: center;
   font-family: 'PT Serif', serif;
-}
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Rubik Mono One', sans-serif;
+  position: relative;
+  font-size: 48px;
 }
 h1 {
-  font-size: 4em;
-  margin: 20px;
+  font-size: 120px;
+  margin: -60px 0 12px;
+  font-variant: small-caps;
 }
-h4 {
-  font-size: 2em;
+p {
+  margin: 12px;
+}
+#logo img {
+  width: 900px;
+  margin: 60px auto;
+}
+.days {
+  font-size: 1.2em;
+  font-variant: small-caps;
+  margin: -24px 0 12px;
 }
 #hella {
   position: absolute;
+  width: 11in;
   bottom: 0;
-  left: calc(50% - 50px);
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+#resy {
+  position: absolute;
+  width: 11in;
+  bottom: 0;
+  text-align: center;
+  font-size: 24px;
+  margin: 0 0 48px;
+}
+table {
+  margin: 32px auto 0;
+  padding-right: 70px;
+}
+th, td {
+  width: 50%;
+  padding-bottom: 16px;
+}
+th {
+  vertical-align: top;
+  text-align: right;
+  padding-right: 8px;
+}
+td {
+  text-align: left;
 }
     </style>
   </head>
   <body>
     <div id="main">
-      <h1>South<br/>Park<br/>Cafe</h1>
-      <p>Coffee hours: 8am–3pm M-F</p>
-      <p>Lunch hours: 12pm–3pm M-F</p>
+      <div id="logo">
+        <img src="logo.svg" />
+      </div>
+      <h1>Now Open!</h1>
+      <p class="days">Monday thru Friday</p>
+      <table>
+        <tr>
+          <th>Coffee:</th><td>8am–5pm</td>
+        </tr>
+        <tr>
+          <th>Lunch:</th><td>12pm–2:30pm<!--<br/><small>(last seating 2:30pm)</small>--></td>
+        </tr>
+        <tr>
+          <th>Bar Drinks:</th><td>2:30pm–5pm</td>
+        </tr>
+        <tr>
+          <th>Dinner:</th><td>5pm–9pm</td>
+        </tr>
+      </table>
+      <p id="resy">Reservations available on Resy</p>
       <h6 id="hella">hella tight</h6>
     </div>
   </body>
