@@ -33,7 +33,7 @@ dt {
 }
 dd {
   margin-top: -4px;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   line-height: 16px;
 }
 dt + dt {
@@ -50,12 +50,16 @@ dd.space {
   width: 6.5in;
   height: 10.5in;
   border: 1px solid #ccc;
-  margin: 40px 0 80px 1.25in;
+  margin: 20px auto 80px;
   font-size: 14px;
   vertical-align: top;
   page-break-after: always;
   box-sizing: border-box;
   padding: 12px;
+}
+.skinny-menu {
+  margin: 20px 40px 80px;
+  display: inline-block;
 }
 .menu-page.back {
   font-size: 13px;
@@ -73,7 +77,7 @@ dd.space {
   font-size: 12px;
 }
 .food {
-  margin: 0 2em 0.75em;
+  margin: 0 2em 0.5em;
   vertical-align: top;
 }
 .food h4 {
@@ -95,6 +99,10 @@ dd.space {
 }
 .inline .food:nth-child(even) {
   padding-left: 8px;
+}
+.skinny-menu .inline .food {
+  width: 100%;
+  padding: 0;
 }
 .place, .title {
   font-style: italic;
@@ -159,7 +167,7 @@ dd.space {
   bottom: 0;
   left: 0;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 #disclosures {
   font-size: 7px;
@@ -168,7 +176,10 @@ dd.space {
   bottom: 0;
   left: 0;
   width: 100%;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
+}
+.skinny-menu {
+  width: 420px;
 }
     </style>
   </head>
@@ -181,12 +192,13 @@ const drinks = {};
 const lunch = {};
 food.smallPlates = [
   ['Bread & House-Cultured Butter', null, 6],
-  ['Cured Trout', 'chives, capers, crème fraîche, olive oil', 12],
-  ['Chorizo & Mussels', 'dry white wine, grilled bread', 16],
+  ['Cured Trout', 'chives, capers, crème fraîche, olive oil', 10],
+  ['Chorizo & Mussels', 'vinho verde broth, grilled bread', 16],
   ['Lamb Meatballs', 'house-fermented cayenne hot sauce, labneh', 16],
-  ['Beets', 'pistachios, endive, feta cheese', 12],
+  ['Beets', 'arugula, pistachios, feta cheese, balsamic', 12],
   // ['Roasted Cauliflower', 'agretti greens', 12],
   ['Rainbow Carrots', 'brown butter, orange, pernod', 12],
+  ['Fries', 'béarnaise aioli', 7],
 ];
 lunch.sides = [
   ['Bread & House-Cultured Butter', null, 6],
@@ -197,38 +209,41 @@ lunch.sides = [
   ['Fries', 'béarnaise aioli', 7],
 ];
 food.salads = [
-  ['Garden', 'mixed greens, smoked grapes, shaved fennel, sherry vinaigrette', 8],
+  ['Garden', 'mixed greens, smoked grapes, shaved fennel, radish, sherry vinaigrette', 8],
   ['Arugula & Farro', 'tomatoes, pistachios, feta, citrus vinaigrette', 10],
   ['Caesar', 'romaine, parmesan crisps, cured egg yolk, lemon-anchovy dressing', 12],
 ]
 food.mains = [
-  ['Koji-rubbed Steak', 'brandied mushrooms, roasted cauliflower', 29],
+  ['Koji-rubbed Steak', 'brandied mushrooms, roasted cauliflower, red wine reduction', 29],
   ['Brined Pork Chop', 'red cabbage, fennel, apple', 24],
   // ['California King Salmon', 'israeli couscous, roasted sunchokes', 30],
-  ['McFarland Springs Trout', 'israeli couscous, sunchokes', 24],
-  ['Fried Chicken or Tofu', 'collard greens, grilled corn relish', 24],
+  ['McFarland Springs Trout', 'israeli couscous, sunchokes, beurre blanc', 24],
+  ['Fried Chicken', 'sautéed greens, squash, hot honey sauce', 24],
+  ['Fried Tofu', 'sautéed greens, squash, hot honey sauce', 20],
   // ['Fried Tofu', 'collard greens, summer corn relish', 20],
 ];
 lunch.mains = [
   ['Steak Frites', 'béarnaise aioli', 28],
-  ['Chorizo & Mussels', 'vinho verde broth, grilled bread', 18],
+  ['Chorizo & Mussels', 'vinho verde broth, grilled bread', 16],
   // ['Koji-rubbed Steak', 'brandied mushrooms, fun beans', 32],
   ['Lamb Meatballs', 'orzo salad, house-fermented cayenne hot sauce', 20],
   ['McFarland Springs Trout', 'israeli couscous, sunchokes', 24],
-  ['Fried Tofu', 'collard greens, grilled corn relish', 20],
-  ['Smash Burger', 'fries or garden salad', 12],
+  ['Fried Tofu', 'sautéed greens, squash', 20],
+  ['Smash Burger with Cheese', 'fries or garden salad', 12],
   ['Beet & Quinoa Burger', 'fries or garden salad', 10],
 ];
 lunch.desserts = [
-  ["Today's Donuts", null, 3.5],
+  ["Today's Dynamo Donuts (gluten-free available)", null, 3.5],
 ];
 food.desserts = [
-  // ['Panna Cotta', 'fruit purée', 10],
-  ['Galette', 'plum, earl grey tea', 10],
+  ['Panna Cotta with Berries', null, 8],
+  ['Brazilian Lime Pie  (torta de limão)', null, 8],
+  ['Seasonal Fruit Tart', null, 8],
 ];
 lunch.salads = food.salads;
+/*
 drinks.cocktails = [
-  ['South Park Spritz', "ford's gin, dolin génépy, pamplemousse, cucumber, lime, saline", 13],
+  ['South Park Spritz', "ford's gin, pamplemousse, cucumber, lime, basil, jalapeño", 13],
   // ['Golden Gate', 'grand marnier, bénédictine, campari, grapefruit, lime', 10],
   // ['Hemingway Daiquiri', "caña brava rum, leopold's maraschino, lime, grapefruit", 10],
   ['Mezcal Daiquiri', 'del maguey vida mezcal, lime, simple', 12],
@@ -237,6 +252,7 @@ drinks.cocktails = [
   ['Bobby Burns', 'bank note blended scotch, carpano antica vermouth, escubac', 14],
   ['Sazerac', "rittenhouse rye, osocalis rare alambic brandy, peychaud’s, absinthe rinse", 14],
 ];
+*/
 drinks.beer = [
   // ['Fort Point Export Dortmunder Lager', 'San Francisco', 5],
   ['Fort Point KSA Kölsch Ale', 'San Francisco', 5],
@@ -244,18 +260,18 @@ drinks.beer = [
   ['Fort Point Villager IPA', 'San Francisco', 5],
 ];
 drinks.zeroProof = [
-  ['South Park Spritz Mocktail', 'cucumber, grapefruit, lime, seedlip garden', 12],
-  ['G&T', 'house tonic, seedlip spice', 10],
+  ['South Park Spritz Mocktail', 'seedlip garden, cucumber, basil, lime', 12],
+  ['G&T', 'seedlip spice, house tonic, lime', 10],
   ['Hoptail', 'grapefruit, simcoe hop syrup, lime, yuzu bitters', 10],
 ];
 drinks.soft = [
-  ['Santa Rosa Plum or Ginger Shrub', null, 4],
+  ['House-made Fruit Shrub', null, 4],
   ["Reed’s Ginger Beer", null, 4],
-  ['Baladin Spuma Nera Soda', 'orange peel, chinese rhubarb, italian spices', 4],
+  ['Baladin Cola', null, 4],
   ['Bubble Up', null, 4],
   ['Squirt', null, 4],
   // ['Topo Chico w/Grapefruit', null, 3.5],
-  ['Topo Chico', null, 3],
+  ['Topo Chico Sparkling Mineral Water', null, 3],
 ];
 drinks.coffee = [
   ['drip', null, 2.5],
@@ -274,6 +290,14 @@ drinks.tea = [
   ['black', 'grand crimson | bergamot', 3],
   ['herbal', 'pacific peppermint | ginger+turmeric+licorice', 3],
 ];
+drinks.amaro = [
+  ['Averna', null, 6],
+  ['Meletti', null, 4],
+  ['Sfumato Rabarbo', null, 5],
+  ['Fernet Branca', null, 6],
+  ['Nonino Quintessentia', null, 9],
+  ["Dell’Erborista", null, 9],
+];
 drinks.nonalc = drinks.zeroProof.concat(drinks.soft);
 const wine = drinks.wine = {}
 wine.bubbles = [
@@ -284,15 +308,14 @@ wine.whites = [
   ['Chardonnay', 'Olema', , 'Sonoma County, California', '2017', 13],
 ];
 wine.reds = [
-  // ['Gamay', 'Domaine Jean Michel Dupre', '“Le Grottier” Morgon', 'Beaujolais, France', '2017', 12],
   ['Pinot Noir', 'Beckon', 'Bien Nacido Vineyard', 'Santa Maria, California', '2016', 16],
-  // ['Pinot Noir', 'Carmel Road', '“South Crest” Panorama Vineyard', 'Monterey, California', '2015', 14],
-  // ['Malbec', 'Tapiz', 'Alta Collection', 'Mendoza, Argentina', 2015, 15],
   ['Niellucciu', 'Domaine Petroni', null, 'Corsica, France', '2017', 12],
   ['Sangiovese, Merlot, Cabernet', 'La Massa', 'Toscana', 'Tuscany, Italy', '2016', 16],
 ];
 wine.dessert = [
-  ['Moscato', 'Saracco', "Moscato d'Asti", 'Piedmont, Italy', 'NV', 10],
+  ['Vietti Moscato d’Asti', 'Piedmont, Italy NV', 8],
+  ['Yalumba Museum Muscat', 'Barossa Valley, Australia NV', 10],
+  ['Blandy’s Bual Colheita 2002', 'Madeira, Portugal', 14],
 ];
 
 lunch.wine = {
@@ -301,33 +324,39 @@ lunch.wine = {
     ['Chardonnay, Pinot, Gamay', 'Prosper Maufoux', 'Crémant de Bourgogne Blanc', 'Burgundy, France', 'NV', 12],
   ],
   whites: [
-    ['Gruner Veltliner', 'Nigl', 'Freiheit', 'Kremstal, Austria', 2018, 12],
     ['Sauvignon Blanc', 'Happy Canyon Vineyards', 'Piocho', 'Santa Barbara, California', 2018, 15],
+    ['Grüner Veltliner', 'Nigl', 'Freiheit', 'Kremstal, Austria', 2018, 12],
     ['Vermentino', 'La Spinetta', 'Toscana', 'Tuscany, Italy', 2018, 11],
     ['Chardonnay', 'Bethel Heights', 'Estate', 'Eola-Amity Hills, Oregon', 2015, 14],
   ],
   reds: [
-    ['Sangiovese', 'Fattoria Selvapiana', null, 'Chianti Rufina, Italy', 2016, 12], 
     ['Pinot Noir', 'Scar of the Sea', null, 'Santa Barbara, California', 2018, 15],
+    ['Sangiovese', 'Fattoria Selvapiana', null, 'Chianti Rufina, Italy', 2016, 11], 
     ['Syrah', 'Pax', 'North Coast', 'North Coast, California', 2017, 15],
-    ['Cabernet Sauvignon', 'Yalumba', 'Menzies Vineyard', 'Barossa Valley, Australia', 2015, 14],
+    ['Cabernet Sauvignon', 'Yalumba', 'The Cigar', 'Barossa Valley, Australia', 2013, 14],
   ],
   rose: [
     ['Cinsault, Grenache, Syrah', 'Château Routas', 'Coteaux Varois', 'Provence, France', 2018, 10],
   ],
 };
 lunch.cocktails = [
-  ['South Park Spritz', "ford's gin, dolin génépy, pamplemousse, cucumber, lime, saline", 12],
-  ['Tequila Eastside', 'el tesoro blanco, lime, cucumber, mint', 10],
+  ['South Park Spritz', "ford's gin, pamplemousse, cucumber, lime, basil, jalapeño", 13],
+  // ['Golden Gate', 'grand marnier, bénédictine, campari, grapefruit, lime', 10],
+  // ['Tequila Eastside', 'el tesoro blanco, lime, cucumber, mint', 10],
+  // ['Oaxacanite', 'del maguey vida mezcal, el tesoro blanco tequila, lime, honey', 12],
   ['Mezcal Daiquiri', 'del maguey vida, lime, simple', 10],
-  ['Scotch Lady', "isle of skye 8yr, laird's apple brandy, lemon, grenadine, egg white", 12],
-  ['Home on the Range', "mckenzie wheated bourbon, ferrand dry curaçao, carpano antica", 13],
-  ['Old Pal', "michter's rye, campari, dolin dry", 14],
+  // ['Espresso Martini', 'square one organic vodka, verve espresso, st george nola coffee liqueur', 12],
+  ['Scotch Lady', 'isle of skye 8 year, laird’s apple brandy, lemon, grenadine, egg white', 11],
+  ['Home on the Range', 'mckenzie wheated bourbon, pierre ferrand dry curaçao, carpano antica', 13],
+  ['Brooklyn', 'michter’s rye, dolin dry vermouth, amaro ciociaro, maraschino', 13],
 ];
 lunch.beer = [
-  ['Harmonic Tischbier Lager', 'Dogpatch, SF', 5],
-  ['Harmonic Original Sim IPA', 'Dogpatch, SF', 6],
+  ['Harmonic Kölsch', 'Dogpatch, SF', 5],
+  ['Harmonic IPA', 'Dogpatch, SF', 6],
   ['Saison Dupont Farmhouse Ale', 'Belgium', 6],
+  ['Duchesse de Bourgogne Flanders Red', 'Belgium', 6],
+  ['La Fin Du Monde Belgian Triple Ale', 'Montreal', 6],
+  ['Petrus Aged Sour Pale Ale', 'Belgium', 7],
   ['Hitachino Nest White Ale', 'Japan', 8],
 ];
 lunch.cider = [
@@ -339,11 +368,32 @@ lunch.cider = [
 function Menu() {
   return (
     <div>
-      <LunchMenu />
-      <LunchMenuBack />
       <DinnerMenu />
       <LunchMenuBack />
-      {/* <DinnerMenuBack /> */}
+      {/*
+      <LunchMenuBack />
+      <DinnerMenuBack />
+      <DessertMenu />
+      <DessertMenu />
+      <DessertMenu />
+      */}
+    </div>
+  );
+}
+
+function DessertMenu() {
+  return (
+    <div id="menu-front" className="menu-page skinny-menu">
+      <Logo date="October 2019" />
+      <div>
+        <FoodSection title="Desserts" content={food.desserts} />
+        <div className="inline">
+          <DrinkSection title="Wine" content={wine.dessert} />
+          <DrinkSection title="Amaro" content={drinks.amaro} />
+          <DrinkSection title="Coffee" content={drinks.coffee} />
+          <DrinkSection title="Tea" content={drinks.tea} />
+        </div>
+      </div>
     </div>
   );
 }
@@ -360,7 +410,7 @@ function Logo({date}) {
 function Footer() {
   return (
     <div>
-      <div id="hella">hella tight</div>
+      <div id="hella">ask about our house hot sauces!</div>
       <div id="disclosures">
         <span id="undercooked">Consuming raw or undercooked proteins may increase your risk of foodborne illness.</span>
         {' '}
@@ -373,7 +423,7 @@ function Footer() {
 function DinnerMenu() {
   return (
     <div id="menu-front" className="menu-page">
-      <Logo date="September 2019: Dinner" />
+      <Logo date="October 2019: Dinner" />
       <div>
         <FoodSection title="Salads" content={food.salads} />
         <FoodSection title="Small Plates" content={food.smallPlates} />
@@ -391,7 +441,7 @@ function DinnerMenu() {
 function LunchMenu() {
   return (
     <div id="lunch-menu" className="menu-page">
-      <Logo date="September 2019: Lunch" />
+      <Logo date="October 2019: Lunch" />
       <FoodSection title="Salads" content={lunch.salads} proteins={true} />
       <FoodSection title="Mains" content={lunch.mains} />
       <FoodSection title="Sides" content={lunch.sides} />
@@ -467,7 +517,7 @@ function WineSection({title, wines}) {
 
 function WineItem({wine}) {
   const [grape, producer, title, place, vintage, glassPrice] = wine;
-  const bottlePrice = Math.floor(glassPrice * 3.2);
+  const bottlePrice = Math.floor(glassPrice * 3.4);
   return (
     <tr>
       <td><span className="grape">{grape}</span> <span className="place">{place} {vintage}</span></td>
