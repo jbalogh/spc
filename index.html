@@ -19,6 +19,9 @@
   box-sizing: border-box;
   font-family: 'PT Serif', serif;
 }
+li {
+  list-style-type: none;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -38,7 +41,7 @@ body {
   letter-spacing: .5px;
   text-align: center;
   color: rgb(240, 240, 240);
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
 }
 .menu-tabs li a {
@@ -115,9 +118,9 @@ h4 {
     <div id="header" class="menu-tabs">
       <ul>
         <li><a href="/">home</a></li>
-        <li><a href="#reservations">reservations</a></li>
         <li><a href="#menu">menu</a></li>
-        <li><a href="#location">location</a></li>
+        <li><a href="#reservations">reservations</a></li>
+        <li><a href="#location">hours &amp; location</a></li>
       </ul>
     </div>
     <div id="logo-pic" class="parallax"></div>
@@ -137,7 +140,15 @@ h4 {
     </div>
     <div id="menu-pic" class="parallax"></div>
     <div id="location" class="section">
-      <h4>Location</h4>
+      <h4>Hours &amp; Location</h4>
+      <div>
+        <ul>
+          <li>Coffee: 8am-9pm</li>
+          <li>Lunch: 12pm-2pm</li>
+          <li>Bar Drinks: 2pm-5pm</li>
+          <li>Dinner: 5pm-9pm</li>
+        </ul>
+      </div>
       <div>
         <p>
         108 South Park Street<br/>
